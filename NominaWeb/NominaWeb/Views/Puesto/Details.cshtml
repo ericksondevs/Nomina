@@ -1,0 +1,51 @@
+﻿@model NominaDataBase.Puestos
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Puestos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Puesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Puesto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalarioMinimo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalarioMinimo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalarioMaximo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalarioMaximo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Departamentos.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Departamentos.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdPuesto }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -115,6 +115,7 @@
       <LastGenOutput>NominaDBModel.Context.cs</LastGenOutput>
       <DependentUpon>NominaDBModel.edmx</DependentUpon>
     </Content>
+    <Content Include="NominaDBModel.edmx.sql" />
     <Content Include="NominaDBModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>NominaDBModel.edmx</DependentUpon>

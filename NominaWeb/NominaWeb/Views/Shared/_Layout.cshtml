@@ -123,17 +123,17 @@
                 <ul class="sidebar-menu" data-widget="tree">
                     <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> <span>INICIO</span></a></li>
                     @*<li class="active">
-                                        <a href="#">
-                                            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                                            <span class="pull-right-container">
-                                                <i class="fa fa-angle-left pull-right"></i>
-                                            </span>
-                                        </a>
-                                        <ul class="treeview-menu">
-                            <li><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                            <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-                        </ul>
-                                    </li>*@
+                        <a href="#">
+                            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+            <li><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+            <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+        </ul>
+                    </li>*@
                     <li class=" treeview">
                         <a href="#">
                             <i class="fa fa-money"></i>
@@ -152,10 +152,10 @@
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="@Url.Action("Index", "Client")"><i class="glyphicon glyphicon-user"></i> Lista</a></li>
-                            <li><a href="@Url.Action("Index", "Provider")"><i class="glyphicon glyphicon-briefcase"></i> En Proceso</a></li>
-                            <li><a href="@Url.Action("Index", "Provider")"><i class="glyphicon glyphicon-briefcase"></i> Dar de Alta</a></li>
-                            <li><a href="@Url.Action("Index", "Provider")"><i class="glyphicon glyphicon-briefcase"></i> Dar de Baja</a></li>
+                            <li><a href="@Url.Action("Index", "Empleado")"><i class="glyphicon glyphicon-user"></i> Lista</a></li>
+                            <li><a href="@Url.Action("Index", "Empleado")"><i class="glyphicon glyphicon-briefcase"></i> En Proceso</a></li>
+                            <li><a href="@Url.Action("Index", "Empleado")"><i class="glyphicon glyphicon-briefcase"></i> Dar de Alta</a></li>
+                            <li><a href="@Url.Action("Index", "Empleado")"><i class="glyphicon glyphicon-briefcase"></i> Dar de Baja</a></li>
 
                         </ul>
                     </li>
@@ -165,8 +165,19 @@
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="@Url.Action("Index", "Sell")"><i class="fa fa-cart-plus"></i> Nueva Asiento</a></li>
+                            <li><a href="@Url.Action("Index", "AsientoContable")"><i class="fa fa-cart-plus"></i> Nueva Asiento</a></li>
                             <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> Consultar Asientos</a></li>
+                        </ul>
+                    </li>
+                    <li class=" treeview">
+                        <a href="#">
+                            <i class="fa fa-money"></i>
+                            <span>TRANSACCIONES</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Index", "MaestroTransacciones")"><i class="glyphicon glyphicon-shopping-cart"></i> Transacciones</a></li>
+                            <li><a  href="@Url.Action("Index", "MaestroTransacciones")" ><i class="glyphicon glyphicon-th-list"></i> Histórico</a></li>
                         </ul>
                     </li>
                     <li class=" treeview">
@@ -186,8 +197,9 @@
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="@Url.Action("Create", "Departamento")"><i class="glyphicon glyphicon-briefcase"></i> Departamentos</a></li>
-                            <li><a href="@Url.Action("Index", "Category")"><i class="fa fa-file-pdf-o"></i> Puestos</a></li>
-                            <li><a href="@Url.Action("Index", "Unit")"><i class="glyphicon glyphicon-briefcase"></i> Transacciones</a></li>
+                            <li><a href="@Url.Action("Index", "Puesto")"><i class="glyphicon glyphicon-briefcase"></i> Puestos</a></li>
+                            <li><a href="@Url.Action("Index", "TipoDeduccion")"><i class="fa fa-file-pdf-o"></i> Tipo de deducciones</a></li>
+                            @*<li><a href="@Url.Action("Index", "Unit")"><i class="glyphicon glyphicon-briefcase"></i> Transacciones</a></li>*@
                             @*<li><a href="currencies.php"><i class="fa fa-usd"></i> Monedas</a></li>
                             *@
                         </ul>

@@ -176,9 +176,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AsientoContableController.cs" />
     <Compile Include="Controllers\DepartamentoController.cs" />
+    <Compile Include="Controllers\DetalleTransaccionesController.cs" />
+    <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MaestroTransaccionesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NominaController.cs" />
+    <Compile Include="Controllers\PuestoController.cs" />
+    <Compile Include="Controllers\TipoDeduccionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -7227,6 +7234,41 @@
     <Content Include="Views\Departamento\Details.cshtml" />
     <Content Include="Views\Departamento\Edit.cshtml" />
     <Content Include="Views\Departamento\Index.cshtml" />
+    <Content Include="Views\Nomina\Create.cshtml" />
+    <Content Include="Views\Nomina\Delete.cshtml" />
+    <Content Include="Views\Nomina\Details.cshtml" />
+    <Content Include="Views\Nomina\Edit.cshtml" />
+    <Content Include="Views\Nomina\Index.cshtml" />
+    <Content Include="Views\Puesto\Create.cshtml" />
+    <Content Include="Views\Puesto\Delete.cshtml" />
+    <Content Include="Views\Puesto\Details.cshtml" />
+    <Content Include="Views\Puesto\Edit.cshtml" />
+    <Content Include="Views\Puesto\Index.cshtml" />
+    <Content Include="Views\AsientoContable\Create.cshtml" />
+    <Content Include="Views\AsientoContable\Delete.cshtml" />
+    <Content Include="Views\AsientoContable\Details.cshtml" />
+    <Content Include="Views\AsientoContable\Edit.cshtml" />
+    <Content Include="Views\AsientoContable\Index.cshtml" />
+    <Content Include="Views\TipoDeduccion\Create.cshtml" />
+    <Content Include="Views\TipoDeduccion\Delete.cshtml" />
+    <Content Include="Views\TipoDeduccion\Details.cshtml" />
+    <Content Include="Views\TipoDeduccion\Edit.cshtml" />
+    <Content Include="Views\TipoDeduccion\Index.cshtml" />
+    <Content Include="Views\MaestroTransacciones\Create.cshtml" />
+    <Content Include="Views\MaestroTransacciones\Delete.cshtml" />
+    <Content Include="Views\MaestroTransacciones\Details.cshtml" />
+    <Content Include="Views\MaestroTransacciones\Edit.cshtml" />
+    <Content Include="Views\MaestroTransacciones\Index.cshtml" />
+    <Content Include="Views\DetalleTransacciones\Create.cshtml" />
+    <Content Include="Views\DetalleTransacciones\Delete.cshtml" />
+    <Content Include="Views\DetalleTransacciones\Details.cshtml" />
+    <Content Include="Views\DetalleTransacciones\Edit.cshtml" />
+    <Content Include="Views\DetalleTransacciones\Index.cshtml" />
+    <Content Include="Views\Empleado\Create.cshtml" />
+    <Content Include="Views\Empleado\Delete.cshtml" />
+    <Content Include="Views\Empleado\Details.cshtml" />
+    <Content Include="Views\Empleado\Edit.cshtml" />
+    <Content Include="Views\Empleado\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
