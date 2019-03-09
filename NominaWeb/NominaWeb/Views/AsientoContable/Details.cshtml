@@ -1,0 +1,75 @@
+﻿@model NominaDataBase.AsientosContables
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AsientosContables</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cuenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cuenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoMovimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoMovimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaAsiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaAsiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MontoAsiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MontoAsiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empleados.Cedula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empleados.Cedula)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdAsiento }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
