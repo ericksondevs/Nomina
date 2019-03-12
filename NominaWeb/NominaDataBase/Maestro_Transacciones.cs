@@ -22,14 +22,14 @@ namespace NominaDataBase
     
         public int IdTransaccion { get; set; }
         public int IdEmpleado { get; set; }
-        public Nullable<int> IdTipoIngreso { get; set; }
-        public Nullable<int> IdTipoDeduccion { get; set; }
+        public int IdTipoIngreso { get; set; }
+        public int IdTipoDeduccion { get; set; }
         public string Estado { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Detalle_Transacciones> Detalle_Transacciones { get; set; }
         public virtual Empleados Empleados { get; set; }
         public virtual Tipos_Deducciones Tipos_Deducciones { get; set; }
         public virtual Tipos_Ingresos Tipos_Ingresos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Detalle_Transacciones> Detalle_Transacciones { get; set; }
     }
 }

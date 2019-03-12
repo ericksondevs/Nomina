@@ -23,6 +23,15 @@ namespace NominaRepository.Repositories
             return GetWhere(predicate).FirstOrDefault();
         }
 
+        public T Find(int? id)
+        {
+            if (id == null)
+            {
+                id = 0;
+            }
+            return dbSet.Find(id);
+        }
+
         public IEnumerable<T> GetAll()
         {
             return GetWhere(null);

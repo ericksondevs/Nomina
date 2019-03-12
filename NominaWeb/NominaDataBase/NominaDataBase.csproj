@@ -66,6 +66,8 @@
     <Compile Include="Maestro_Transacciones.cs">
       <DependentUpon>NominaDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="MetaDataEntities\DetalleTransaccionesMetaData.cs" />
+    <Compile Include="MetaDataEntities\MaestroTransaccionesMetaData.cs" />
     <Compile Include="MetaDataEntities\PartialMetaDataClasses.cs" />
     <Compile Include="NominaDBModel.Context.cs">
       <AutoGen>True</AutoGen>

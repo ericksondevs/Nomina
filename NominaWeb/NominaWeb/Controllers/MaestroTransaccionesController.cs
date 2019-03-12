@@ -7,20 +7,36 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using NominaDataBase;
+using NominaRepository;
 
 namespace NominaWeb.Controllers
 {
     public class MaestroTransaccionesController : Controller
     {
         private NominaDBEntities db = new NominaDBEntities();
-
+        UnitOfWork u = new UnitOfWork();
         // GET: MaestroTransacciones
         public ActionResult Index()
         {
-            var maestro_Transacciones = db.Maestro_Transacciones.Include(m => m.Empleados).Include(m => m.Tipos_Deducciones).Include(m => m.Tipos_Ingresos);
+            var maestro_Transacciones = u.TransaccionesRepository.GetAll().AsQueryable().Include(m => m.Empleados).Include(m => m.Tipos_Deducciones).Include(m => m.Tipos_Ingresos).Include(x => x.Detalle_Transacciones);
             return View(maestro_Transacciones.ToList());
         }
 
+        public void LoadViewBags(Maestro_Transacciones maestro_Transacciones = null)
+        {
+            if (maestro_Transacciones == null)
+            {
+                ViewBag.IdEmpleado = new SelectList(db.Empleados, "IdEmpleado", "Cedula");
+                ViewBag.IdTipoDeduccion = new SelectList(db.Tipos_Deducciones, "IdTipoDeduccion", "Nombre");
+                ViewBag.IdTipoIngreso = new SelectList(db.Tipos_Ingresos, "IdTipoIngreso", "Nombre");
+            }
+            else
+            {
+                ViewBag.IdEmpleado = new SelectList(db.Empleados, "IdEmpleado", "Cedula", maestro_Transacciones.IdEmpleado);
+                ViewBag.IdTipoDeduccion = new SelectList(db.Tipos_Deducciones, "IdTipoDeduccion", "Nombre", maestro_Transacciones.IdTipoDeduccion);
+                ViewBag.IdTipoIngreso = new SelectList(db.Tipos_Ingresos, "IdTipoIngreso", "Nombre", maestro_Transacciones.IdTipoIngreso);
+            }
+        }
         // GET: MaestroTransacciones/Details/5
         public ActionResult Details(int? id)
         {
@@ -28,7 +44,9 @@ namespace NominaWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Maestro_Transacciones maestro_Transacciones = db.Maestro_Transacciones.Find(id);
+
+            Maestro_Transacciones maestro_Transacciones = u.TransaccionesRepository.Find(id);
+
             if (maestro_Transacciones == null)
             {
                 return HttpNotFound();
@@ -39,9 +57,7 @@ namespace NominaWeb.Controllers
         // GET: MaestroTransacciones/Create
         public ActionResult Create()
         {
-            ViewBag.IdEmpleado = new SelectList(db.Empleados, "IdEmpleado", "Cedula");
-            ViewBag.IdTipoDeduccion = new SelectList(db.Tipos_Deducciones, "IdTipoDeduccion", "Nombre");
-            ViewBag.IdTipoIngreso = new SelectList(db.Tipos_Ingresos, "IdTipoIngreso", "Nombre");
+            LoadViewBags();
             return View();
         }
 
@@ -54,14 +70,12 @@ namespace NominaWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Maestro_Transacciones.Add(maestro_Transacciones);
-                db.SaveChanges();
+                u.TransaccionesRepository.Add(maestro_Transacciones);
+                u.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdEmpleado = new SelectList(db.Empleados, "IdEmpleado", "Cedula", maestro_Transacciones.IdEmpleado);
-            ViewBag.IdTipoDeduccion = new SelectList(db.Tipos_Deducciones, "IdTipoDeduccion", "Nombre", maestro_Transacciones.IdTipoDeduccion);
-            ViewBag.IdTipoIngreso = new SelectList(db.Tipos_Ingresos, "IdTipoIngreso", "Nombre", maestro_Transacciones.IdTipoIngreso);
+            LoadViewBags();
             return View(maestro_Transacciones);
         }
 
@@ -72,14 +86,14 @@ namespace NominaWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Maestro_Transacciones maestro_Transacciones = db.Maestro_Transacciones.Find(id);
+            Maestro_Transacciones maestro_Transacciones = u.TransaccionesRepository.Find(id);
             if (maestro_Transacciones == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IdEmpleado = new SelectList(db.Empleados, "IdEmpleado", "Cedula", maestro_Transacciones.IdEmpleado);
-            ViewBag.IdTipoDeduccion = new SelectList(db.Tipos_Deducciones, "IdTipoDeduccion", "Nombre", maestro_Transacciones.IdTipoDeduccion);
-            ViewBag.IdTipoIngreso = new SelectList(db.Tipos_Ingresos, "IdTipoIngreso", "Nombre", maestro_Transacciones.IdTipoIngreso);
+
+            LoadViewBags();
+
             return View(maestro_Transacciones);
         }
 
@@ -92,13 +106,13 @@ namespace NominaWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(maestro_Transacciones).State = EntityState.Modified;
-                db.SaveChanges();
+                u.TransaccionesRepository.Update(maestro_Transacciones);
+                u.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdEmpleado = new SelectList(db.Empleados, "IdEmpleado", "Cedula", maestro_Transacciones.IdEmpleado);
-            ViewBag.IdTipoDeduccion = new SelectList(db.Tipos_Deducciones, "IdTipoDeduccion", "Nombre", maestro_Transacciones.IdTipoDeduccion);
-            ViewBag.IdTipoIngreso = new SelectList(db.Tipos_Ingresos, "IdTipoIngreso", "Nombre", maestro_Transacciones.IdTipoIngreso);
+
+            LoadViewBags();
+
             return View(maestro_Transacciones);
         }
 
@@ -109,7 +123,7 @@ namespace NominaWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Maestro_Transacciones maestro_Transacciones = db.Maestro_Transacciones.Find(id);
+            Maestro_Transacciones maestro_Transacciones = u.TransaccionesRepository.Find(id);
             if (maestro_Transacciones == null)
             {
                 return HttpNotFound();
@@ -122,9 +136,9 @@ namespace NominaWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Maestro_Transacciones maestro_Transacciones = db.Maestro_Transacciones.Find(id);
-            db.Maestro_Transacciones.Remove(maestro_Transacciones);
-            db.SaveChanges();
+            Maestro_Transacciones maestro_Transacciones = u.TransaccionesRepository.Find(id);
+            u.TransaccionesRepository.Remove(maestro_Transacciones);
+            u.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -132,7 +146,7 @@ namespace NominaWeb.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                u.Dispose();
             }
             base.Dispose(disposing);
         }

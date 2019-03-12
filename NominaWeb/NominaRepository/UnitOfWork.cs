@@ -35,6 +35,34 @@ namespace NominaRepository
             }
         }
 
+        private MaestroTransaccionesRepository transaccionesRepository;
+
+        public MaestroTransaccionesRepository TransaccionesRepository
+        {
+            get
+            {
+                if (this.transaccionesRepository == null)
+                {
+                    this.transaccionesRepository = new MaestroTransaccionesRepository(dbContext);
+                }
+                return transaccionesRepository;
+            }
+        }
+
+        private DetalleTransaccionesRepository detalletransaccionesRepository;
+
+        public DetalleTransaccionesRepository detalleTransaccionesRepository
+        {
+            get
+            {
+                if (this.detalletransaccionesRepository == null)
+                {
+                    this.detalletransaccionesRepository = new DetalleTransaccionesRepository(dbContext);
+                }
+                return detalletransaccionesRepository;
+            }
+        }
+
         public void SaveChanges()
         {
             AddLogInfo();
