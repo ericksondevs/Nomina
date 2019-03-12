@@ -19,5 +19,8 @@ namespace NominaDataBase
         public System.DateTime Fecha { get; set; }
         public decimal Monto { get; set; }
         public string Estado { get; set; }
+        public int IdMaestroTransaccion { get; set; }
+    
+        public virtual Maestro_Transacciones Maestro_Transacciones { get; set; }
     }
 }

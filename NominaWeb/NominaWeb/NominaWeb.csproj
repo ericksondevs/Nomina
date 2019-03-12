@@ -178,7 +178,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AsientoContableController.cs" />
     <Compile Include="Controllers\DepartamentoController.cs" />
-    <Compile Include="Controllers\DetalleTransaccionesController.cs" />
+    <Compile Include="Controllers\DetalleTransacciones.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MaestroTransaccionesController.cs" />
@@ -7259,16 +7259,16 @@
     <Content Include="Views\MaestroTransacciones\Details.cshtml" />
     <Content Include="Views\MaestroTransacciones\Edit.cshtml" />
     <Content Include="Views\MaestroTransacciones\Index.cshtml" />
-    <Content Include="Views\DetalleTransacciones\Create.cshtml" />
-    <Content Include="Views\DetalleTransacciones\Delete.cshtml" />
-    <Content Include="Views\DetalleTransacciones\Details.cshtml" />
-    <Content Include="Views\DetalleTransacciones\Edit.cshtml" />
-    <Content Include="Views\DetalleTransacciones\Index.cshtml" />
     <Content Include="Views\Empleado\Create.cshtml" />
     <Content Include="Views\Empleado\Delete.cshtml" />
     <Content Include="Views\Empleado\Details.cshtml" />
     <Content Include="Views\Empleado\Edit.cshtml" />
     <Content Include="Views\Empleado\Index.cshtml" />
+    <Content Include="Views\DetalleTransacciones\Create.cshtml" />
+    <Content Include="Views\DetalleTransacciones\Delete.cshtml" />
+    <Content Include="Views\DetalleTransacciones\Details.cshtml" />
+    <Content Include="Views\DetalleTransacciones\Edit.cshtml" />
+    <Content Include="Views\DetalleTransacciones\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

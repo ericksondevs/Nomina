@@ -14,6 +14,12 @@ namespace NominaDataBase
     
     public partial class Maestro_Transacciones
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Maestro_Transacciones()
+        {
+            this.Detalle_Transacciones = new HashSet<Detalle_Transacciones>();
+        }
+    
         public int IdTransaccion { get; set; }
         public int IdEmpleado { get; set; }
         public Nullable<int> IdTipoIngreso { get; set; }
@@ -23,5 +29,7 @@ namespace NominaDataBase
         public virtual Empleados Empleados { get; set; }
         public virtual Tipos_Deducciones Tipos_Deducciones { get; set; }
         public virtual Tipos_Ingresos Tipos_Ingresos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Detalle_Transacciones> Detalle_Transacciones { get; set; }
     }
 }
