@@ -12,26 +12,18 @@ namespace NominaDataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class Maestro_Transacciones
+    public partial class TipoTransaccion
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Maestro_Transacciones()
+        public TipoTransaccion()
         {
-            this.Detalle_Transacciones = new HashSet<Detalle_Transacciones>();
+            this.Maestro_Transacciones = new HashSet<Maestro_Transacciones>();
         }
     
-        public int IdTransaccion { get; set; }
-        public int IdEmpleado { get; set; }
-        public int IdTipoIngreso { get; set; }
-        public int IdTipoDeduccion { get; set; }
-        public string Estado { get; set; }
-        public int TipoTransaccion { get; set; }
+        public int IdTipoTransaccion { get; set; }
+        public string Descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Detalle_Transacciones> Detalle_Transacciones { get; set; }
-        public virtual Empleados Empleados { get; set; }
-        public virtual TipoTransaccion TipoTransaccion1 { get; set; }
-        public virtual Tipos_Deducciones Tipos_Deducciones { get; set; }
-        public virtual Tipos_Ingresos Tipos_Ingresos { get; set; }
+        public virtual ICollection<Maestro_Transacciones> Maestro_Transacciones { get; set; }
     }
 }

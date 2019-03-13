@@ -1,4 +1,4 @@
-﻿@model NominaDataBase.Maestro_Transacciones
+﻿@model NominaWeb.Models.TransaccionViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -8,44 +8,52 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Maestro_Transacciones</h4>
+    <h4>Detalle Transacciones</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Estado)
+            @Html.DisplayNameFor(model => model.Maestra.Estado)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Estado)
+            @Html.DisplayFor(model => model.Maestra.Estado)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Empleados.Cedula)
+            @Html.DisplayNameFor(model => model.Maestra.Empleados.Cedula)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Empleados.Cedula)
+            @Html.DisplayFor(model => model.Maestra.Empleados.Cedula)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Tipos_Deducciones.Nombre)
+            @Html.DisplayNameFor(model => model.Maestra.Tipos_Deducciones.Nombre)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Tipos_Deducciones.Nombre)
+            @Html.DisplayFor(model => model.Maestra.Tipos_Deducciones.Nombre)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Tipos_Ingresos.Nombre)
+            @Html.DisplayNameFor(model => model.Maestra.Tipos_Ingresos.Nombre)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Tipos_Ingresos.Nombre)
+            @Html.DisplayFor(model => model.Maestra.Tipos_Ingresos.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Detalle.Monto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Detalle.Monto)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdTransaccion }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Maestra.IdTransaccion }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

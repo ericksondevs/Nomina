@@ -186,6 +186,7 @@
     <Compile Include="Controllers\NominaController.cs" />
     <Compile Include="Controllers\PuestoController.cs" />
     <Compile Include="Controllers\TipoDeduccionController.cs" />
+    <Compile Include="Controllers\TipoTransaccionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -7270,6 +7271,11 @@
     <Content Include="Views\DetalleTransacciones\Details.cshtml" />
     <Content Include="Views\DetalleTransacciones\Edit.cshtml" />
     <Content Include="Views\DetalleTransacciones\Index.cshtml" />
+    <Content Include="Views\TipoTransaccion\Create.cshtml" />
+    <Content Include="Views\TipoTransaccion\Delete.cshtml" />
+    <Content Include="Views\TipoTransaccion\Details.cshtml" />
+    <Content Include="Views\TipoTransaccion\Edit.cshtml" />
+    <Content Include="Views\TipoTransaccion\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

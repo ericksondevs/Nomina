@@ -16,9 +16,16 @@ namespace NominaWeb.Controllers
         private NominaDBEntities db = new NominaDBEntities();
         UnitOfWork u = new UnitOfWork();
         // GET: MaestroTransacciones
-        public ActionResult Index()
+        public ActionResult Index(string searchName)
         {
             var maestro_Transacciones = u.TransaccionesRepository.GetAll().AsQueryable().Include(m => m.Empleados).Include(m => m.Tipos_Deducciones).Include(m => m.Tipos_Ingresos).Include(x => x.Detalle_Transacciones);
+
+            // Filter down if necessary
+            if (!String.IsNullOrEmpty(searchName))
+            {
+                maestro_Transacciones = maestro_Transacciones.Where(p => p.IdTransaccion.ToString() == searchName);
+            }
+
             return View(maestro_Transacciones.ToList());
         }
 
@@ -26,15 +33,18 @@ namespace NominaWeb.Controllers
         {
             if (maestro_Transacciones == null)
             {
-                ViewBag.IdEmpleado = new SelectList(db.Empleados, "IdEmpleado", "Cedula");
+                ViewBag.IdEmpleado = new SelectList(db.Empleados, "IdEmpleado", "Nombre");
                 ViewBag.IdTipoDeduccion = new SelectList(db.Tipos_Deducciones, "IdTipoDeduccion", "Nombre");
                 ViewBag.IdTipoIngreso = new SelectList(db.Tipos_Ingresos, "IdTipoIngreso", "Nombre");
+                ViewBag.TipoTransaccion = new SelectList(db.TipoTransaccion, "IdTipoTransaccion", "Descripcion");
             }
             else
             {
                 ViewBag.IdEmpleado = new SelectList(db.Empleados, "IdEmpleado", "Cedula", maestro_Transacciones.IdEmpleado);
                 ViewBag.IdTipoDeduccion = new SelectList(db.Tipos_Deducciones, "IdTipoDeduccion", "Nombre", maestro_Transacciones.IdTipoDeduccion);
                 ViewBag.IdTipoIngreso = new SelectList(db.Tipos_Ingresos, "IdTipoIngreso", "Nombre", maestro_Transacciones.IdTipoIngreso);
+                ViewBag.TipoTransaccion = new SelectList(db.TipoTransaccion, "IdTipoTransaccion", "Descripcion", maestro_Transacciones.TipoTransaccion);
+
             }
         }
         // GET: MaestroTransacciones/Details/5

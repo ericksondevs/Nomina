@@ -34,5 +34,6 @@ namespace NominaDataBase
         public virtual DbSet<Puestos> Puestos { get; set; }
         public virtual DbSet<Tipos_Deducciones> Tipos_Deducciones { get; set; }
         public virtual DbSet<Tipos_Ingresos> Tipos_Ingresos { get; set; }
+        public virtual DbSet<TipoTransaccion> TipoTransaccion { get; set; }
     }
 }

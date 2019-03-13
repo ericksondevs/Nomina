@@ -97,6 +97,9 @@
     <Compile Include="Tipos_Ingresos.cs">
       <DependentUpon>NominaDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="TipoTransaccion.cs">
+      <DependentUpon>NominaDBModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="NominaDBModel.edmx">

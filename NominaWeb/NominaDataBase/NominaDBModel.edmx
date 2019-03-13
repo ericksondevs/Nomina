@@ -31,7 +31,6 @@
             <PropertyRef Name="IdTransaccion" />
           </Key>
           <Property Name="IdTransaccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TipoTransaccion" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Fecha" Type="date" Nullable="false" />
           <Property Name="Monto" Type="numeric" Precision="15" Scale="2" Nullable="false" />
           <Property Name="Estado" Type="char" MaxLength="1" />
@@ -63,6 +62,7 @@
           <Property Name="IdTipoIngreso" Type="int" Nullable="false" />
           <Property Name="IdTipoDeduccion" Type="int" Nullable="false" />
           <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="TipoTransaccion" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Nominas">
           <Key>
@@ -112,6 +112,13 @@
           <Property Name="DependeSalario" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="Estado" Type="char" MaxLength="1" />
         </EntityType>
+        <EntityType Name="TipoTransaccion">
+          <Key>
+            <PropertyRef Name="IdTipoTransaccion" />
+          </Key>
+          <Property Name="IdTipoTransaccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <Association Name="FK__Detalle_T__IdMae__5CD6CB2B">
           <End Role="Maestro_Transacciones" Type="Self.Maestro_Transacciones" Multiplicity="1" />
           <End Role="Detalle_Transacciones" Type="Self.Detalle_Transacciones" Multiplicity="*" />
@@ -121,6 +128,18 @@
             </Principal>
             <Dependent Role="Detalle_Transacciones">
               <PropertyRef Name="IdMaestroTransaccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Maestro_T__TipoT__71D1E811">
+          <End Role="TipoTransaccion" Type="Self.TipoTransaccion" Multiplicity="1" />
+          <End Role="Maestro_Transacciones" Type="Self.Maestro_Transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoTransaccion">
+              <PropertyRef Name="IdTipoTransaccion" />
+            </Principal>
+            <Dependent Role="Maestro_Transacciones">
+              <PropertyRef Name="TipoTransaccion" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -242,9 +261,14 @@
           <EntitySet Name="Puestos" EntityType="Self.Puestos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tipos_Deducciones" EntityType="Self.Tipos_Deducciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tipos_Ingresos" EntityType="Self.Tipos_Ingresos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoTransaccion" EntityType="Self.TipoTransaccion" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Detalle_T__IdMae__5CD6CB2B" Association="Self.FK__Detalle_T__IdMae__5CD6CB2B">
             <End Role="Maestro_Transacciones" EntitySet="Maestro_Transacciones" />
             <End Role="Detalle_Transacciones" EntitySet="Detalle_Transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Maestro_T__TipoT__71D1E811" Association="Self.FK__Maestro_T__TipoT__71D1E811">
+            <End Role="TipoTransaccion" EntitySet="TipoTransaccion" />
+            <End Role="Maestro_Transacciones" EntitySet="Maestro_Transacciones" />
           </AssociationSet>
           <AssociationSet Name="Fk_Empl_Asiento" Association="Self.Fk_Empl_Asiento">
             <End Role="Empleados" EntitySet="Empleados" />
@@ -297,6 +321,7 @@
           <EntitySet Name="Puestos" EntityType="NominaDBModel.Puestos" />
           <EntitySet Name="Tipos_Deducciones" EntityType="NominaDBModel.Tipos_Deducciones" />
           <EntitySet Name="Tipos_Ingresos" EntityType="NominaDBModel.Tipos_Ingresos" />
+          <EntitySet Name="TipoTransaccion" EntityType="NominaDBModel.TipoTransaccion" />
           <AssociationSet Name="Fk_Empl_Asiento" Association="NominaDBModel.Fk_Empl_Asiento">
             <End Role="Empleados" EntitySet="Empleados" />
             <End Role="AsientosContables" EntitySet="AsientosContables" />
@@ -328,6 +353,10 @@
           <AssociationSet Name="Fk_Nom_Empl" Association="NominaDBModel.Fk_Nom_Empl">
             <End Role="Nominas" EntitySet="Nominas" />
             <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Maestro_T__TipoT__71D1E811" Association="NominaDBModel.FK__Maestro_T__TipoT__71D1E811">
+            <End Role="TipoTransaccion" EntitySet="TipoTransaccion" />
+            <End Role="Maestro_Transacciones" EntitySet="Maestro_Transacciones" />
           </AssociationSet>
           <AssociationSet Name="Fk_TipDeduc_Transa" Association="NominaDBModel.Fk_TipDeduc_Transa">
             <End Role="Tipos_Deducciones" EntitySet="Tipos_Deducciones" />
@@ -367,7 +396,6 @@
             <PropertyRef Name="IdTransaccion" />
           </Key>
           <Property Name="IdTransaccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TipoTransaccion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Monto" Type="Decimal" Nullable="false" Precision="15" Scale="2" />
           <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
@@ -406,8 +434,10 @@
           <Property Name="IdTipoIngreso" Type="Int32" Nullable="false" />
           <Property Name="IdTipoDeduccion" Type="Int32" Nullable="false" />
           <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="TipoTransaccion" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Detalle_Transacciones" Relationship="NominaDBModel.FK__Detalle_T__IdMae__5CD6CB2B" FromRole="Maestro_Transacciones" ToRole="Detalle_Transacciones" />
           <NavigationProperty Name="Empleados" Relationship="NominaDBModel.Fk_Empl_Transa" FromRole="Maestro_Transacciones" ToRole="Empleados" />
+          <NavigationProperty Name="TipoTransaccion1" Relationship="NominaDBModel.FK__Maestro_T__TipoT__71D1E811" FromRole="Maestro_Transacciones" ToRole="TipoTransaccion" />
           <NavigationProperty Name="Tipos_Deducciones" Relationship="NominaDBModel.Fk_TipDeduc_Transa" FromRole="Maestro_Transacciones" ToRole="Tipos_Deducciones" />
           <NavigationProperty Name="Tipos_Ingresos" Relationship="NominaDBModel.FK_TipIngr_Transa" FromRole="Maestro_Transacciones" ToRole="Tipos_Ingresos" />
         </EntityType>
@@ -464,6 +494,14 @@
           <Property Name="DependeSalario" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="Maestro_Transacciones" Relationship="NominaDBModel.FK_TipIngr_Transa" FromRole="Tipos_Ingresos" ToRole="Maestro_Transacciones" />
+        </EntityType>
+        <EntityType Name="TipoTransaccion">
+          <Key>
+            <PropertyRef Name="IdTipoTransaccion" />
+          </Key>
+          <Property Name="IdTipoTransaccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Maestro_Transacciones" Relationship="NominaDBModel.FK__Maestro_T__TipoT__71D1E811" FromRole="TipoTransaccion" ToRole="Maestro_Transacciones" />
         </EntityType>
         <Association Name="Fk_Empl_Asiento">
           <End Type="NominaDBModel.Empleados" Role="Empleados" Multiplicity="1" />
@@ -561,6 +599,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Maestro_T__TipoT__71D1E811">
+          <End Type="NominaDBModel.TipoTransaccion" Role="TipoTransaccion" Multiplicity="1" />
+          <End Type="NominaDBModel.Maestro_Transacciones" Role="Maestro_Transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoTransaccion">
+              <PropertyRef Name="IdTipoTransaccion" />
+            </Principal>
+            <Dependent Role="Maestro_Transacciones">
+              <PropertyRef Name="TipoTransaccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="Fk_TipDeduc_Transa">
           <End Type="NominaDBModel.Tipos_Deducciones" Role="Tipos_Deducciones" Multiplicity="1" />
           <End Type="NominaDBModel.Maestro_Transacciones" Role="Maestro_Transacciones" Multiplicity="*" />
@@ -585,7 +635,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -621,7 +671,6 @@
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Monto" ColumnName="Monto" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="TipoTransaccion" ColumnName="TipoTransaccion" />
                 <ScalarProperty Name="IdTransaccion" ColumnName="IdTransaccion" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -647,6 +696,7 @@
           <EntitySetMapping Name="Maestro_Transacciones">
             <EntityTypeMapping TypeName="NominaDBModel.Maestro_Transacciones">
               <MappingFragment StoreEntitySet="Maestro_Transacciones">
+                <ScalarProperty Name="TipoTransaccion" ColumnName="TipoTransaccion" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="IdTipoDeduccion" ColumnName="IdTipoDeduccion" />
                 <ScalarProperty Name="IdTipoIngreso" ColumnName="IdTipoIngreso" />
@@ -704,6 +754,14 @@
                 <ScalarProperty Name="DependeSalario" ColumnName="DependeSalario" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="IdTipoIngreso" ColumnName="IdTipoIngreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoTransaccion">
+            <EntityTypeMapping TypeName="NominaDBModel.TipoTransaccion">
+              <MappingFragment StoreEntitySet="TipoTransaccion">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdTipoTransaccion" ColumnName="IdTipoTransaccion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

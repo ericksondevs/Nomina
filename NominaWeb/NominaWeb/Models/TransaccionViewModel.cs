@@ -6,7 +6,7 @@ using System.Web;
 
 namespace NominaWeb.Models
 {
-    public class TransaccionViewModel
+    public  class TransaccionViewModel
     {
         public Maestro_Transacciones Maestra { get; set; }
         public Detalle_Transacciones Detalle { get; set; }

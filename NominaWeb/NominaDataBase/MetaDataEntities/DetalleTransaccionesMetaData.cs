@@ -11,10 +11,10 @@ namespace NominaDataBase.MetaDataEntities
     {
         [Display(Name = "Id Transacción")]
         public int IdTransaccion { get; set; }
-        [Display(Name = "Tipo de Transacción")]
-        public string TipoTransaccion { get; set; }
+     
         [Display(Name = "Fecha")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DataType(DataType.Date)]
         public System.DateTime Fecha { get; set; }
         [Display(Name = "Monto")]
         [DisplayFormat(DataFormatString = "{0:C0}")]

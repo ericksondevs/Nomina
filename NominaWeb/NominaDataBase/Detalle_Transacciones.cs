@@ -15,7 +15,6 @@ namespace NominaDataBase
     public partial class Detalle_Transacciones
     {
         public int IdTransaccion { get; set; }
-        public string TipoTransaccion { get; set; }
         public System.DateTime Fecha { get; set; }
         public decimal Monto { get; set; }
         public string Estado { get; set; }

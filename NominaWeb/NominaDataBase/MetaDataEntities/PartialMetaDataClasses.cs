@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 namespace NominaDataBase
 {
     //[System.ComponentModel.DataAnnotations.MetadataType(typeof(BaseMetaDataEntity))] 
-    public partial class Departamentos : BaseMetaDataEntity { }
+    //public partial class Departamentos : BaseMetaDataEntity { }
 
-    [MetadataType(typeof(MaestroTransaccionesMetaData))] 
+    [MetadataType(typeof(Maestro_TransaccionesMetaData))]
     public partial class Maestro_Transacciones : BaseMetaDataEntity { }
 
     [MetadataType(typeof(DetalleTransaccionesMetaData))]

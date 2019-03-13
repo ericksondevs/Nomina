@@ -10,8 +10,20 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+<div class="input-group">
+    <span class="input-group-btn">
+        <input type="submit" value="Buscar" class="btn btn-default" />
+    </span>
+ @Html.TextBox("SearchName", null, new { @class = "form-control " })
+</div>
+
+
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdTransaccion)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Estado)
         </th>
@@ -30,6 +42,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.IdTransaccion)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Estado)
         </td>
         <td>
@@ -42,9 +57,9 @@
             @Html.DisplayFor(modelItem => item.Tipos_Ingresos.Nombre)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdTransaccion }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdTransaccion }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdTransaccion })
+            @Html.ActionLink("Edit", "Edit", new { id = item.IdTransaccion }) |
+            @Html.ActionLink("Details", "Details", new { id = item.IdTransaccion }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.IdTransaccion })
         </td>
     </tr>
 }
