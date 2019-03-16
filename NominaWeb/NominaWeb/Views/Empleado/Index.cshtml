@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<NominaDataBase.Empleados>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Creacion de Empleados";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Empleados</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Nuevo", "Create")
 </p>
 <table class="table">
     <tr>
@@ -39,15 +39,15 @@
         <th>
             @Html.DisplayNameFor(model => model.Departamentos.Nombre)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Nominas.Nombre)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Puestos.Puesto)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Nominas1.Nombre)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -80,15 +80,15 @@
         <td>
             @Html.DisplayFor(modelItem => item.Departamentos.Nombre)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Nominas.Nombre)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Puestos.Puesto)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Nominas1.Nombre)
-        </td>
+        </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.IdEmpleado }) |
             @Html.ActionLink("Details", "Details", new { id=item.IdEmpleado }) |

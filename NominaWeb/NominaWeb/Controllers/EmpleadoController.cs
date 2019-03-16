@@ -17,7 +17,7 @@ namespace NominaWeb.Controllers
         // GET: Empleado
         public ActionResult Index()
         {
-            var empleados = db.Empleados.Include(e => e.Departamentos).Include(e => e.Nominas).Include(e => e.Puestos).Include(e => e.Nominas1);
+            var empleados = db.Empleados.Include(e => e.Departamentos).Include(e => e.Puestos);
             return View(empleados.ToList());
         }
 
@@ -42,7 +42,7 @@ namespace NominaWeb.Controllers
             ViewBag.IdDepartamento = new SelectList(db.Departamentos, "IdDepartamento", "Nombre");
             ViewBag.IdNomina = new SelectList(db.Nominas, "IdNomina", "Nombre");
             ViewBag.IdPuesto = new SelectList(db.Puestos, "IdPuesto", "Puesto");
-            ViewBag.IdNomina = new SelectList(db.Nominas, "IdNomina", "Nombre");
+            //ViewBag.IdNomina = new SelectList(db.Nominas, "IdNomina", "Nombre");
             return View();
         }
 
@@ -61,9 +61,9 @@ namespace NominaWeb.Controllers
             }
 
             ViewBag.IdDepartamento = new SelectList(db.Departamentos, "IdDepartamento", "Nombre", empleados.IdDepartamento);
-            ViewBag.IdNomina = new SelectList(db.Nominas, "IdNomina", "Nombre", empleados.IdNomina);
+            //ViewBag.IdNomina = new SelectList(db.Nominas, "IdNomina", "Nombre", empleados.IdNomina);
             ViewBag.IdPuesto = new SelectList(db.Puestos, "IdPuesto", "Puesto", empleados.IdPuesto);
-            ViewBag.IdNomina = new SelectList(db.Nominas, "IdNomina", "Nombre", empleados.IdNomina);
+            //ViewBag.IdNomina = new SelectList(db.Nominas, "IdNomina", "Nombre", empleados.IdNomina);
             return View(empleados);
         }
 
@@ -80,9 +80,9 @@ namespace NominaWeb.Controllers
                 return HttpNotFound();
             }
             ViewBag.IdDepartamento = new SelectList(db.Departamentos, "IdDepartamento", "Nombre", empleados.IdDepartamento);
-            ViewBag.IdNomina = new SelectList(db.Nominas, "IdNomina", "Nombre", empleados.IdNomina);
+            //ViewBag.IdNomina = new SelectList(db.Nominas, "IdNomina", "Nombre", empleados.IdNomina);
             ViewBag.IdPuesto = new SelectList(db.Puestos, "IdPuesto", "Puesto", empleados.IdPuesto);
-            ViewBag.IdNomina = new SelectList(db.Nominas, "IdNomina", "Nombre", empleados.IdNomina);
+            //ViewBag.IdNomina = new SelectList(db.Nominas, "IdNomina", "Nombre", empleados.IdNomina);
             return View(empleados);
         }
 
@@ -100,9 +100,9 @@ namespace NominaWeb.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.IdDepartamento = new SelectList(db.Departamentos, "IdDepartamento", "Nombre", empleados.IdDepartamento);
-            ViewBag.IdNomina = new SelectList(db.Nominas, "IdNomina", "Nombre", empleados.IdNomina);
+            //ViewBag.IdNomina = new SelectList(db.Nominas, "IdNomina", "Nombre", empleados.IdNomina);
             ViewBag.IdPuesto = new SelectList(db.Puestos, "IdPuesto", "Puesto", empleados.IdPuesto);
-            ViewBag.IdNomina = new SelectList(db.Nominas, "IdNomina", "Nombre", empleados.IdNomina);
+            //ViewBag.IdNomina = new SelectList(db.Nominas, "IdNomina", "Nombre", empleados.IdNomina);
             return View(empleados);
         }
 
