@@ -7,114 +7,110 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using NominaDataBase;
-using NominaRepository;
+
 namespace NominaWeb.Controllers
 {
-    public class DepartamentoController : Controller
+    public class TiposIngresosController : Controller
     {
-        //Evitar usar esta llamada, y hacerlo con UnitOfWork
         private NominaDBEntities db = new NominaDBEntities();
 
-        UnitOfWork unit = new UnitOfWork();
-        // GET: Departamento
+        // GET: Tipos_Ingresos
         public ActionResult Index()
         {
-            return View(db.Departamentos.ToList());
+            return View(db.Tipos_Ingresos.ToList());
         }
 
-        // GET: Departamento/Details/5
+        // GET: Tipos_Ingresos/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Departamentos departamentos = db.Departamentos.Find(id);
-            if (departamentos == null)
+            Tipos_Ingresos tipos_Ingresos = db.Tipos_Ingresos.Find(id);
+            if (tipos_Ingresos == null)
             {
                 return HttpNotFound();
             }
-            return View(departamentos);
+            return View(tipos_Ingresos);
         }
 
-        // GET: Departamento/Create
+        // GET: Tipos_Ingresos/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Departamento/Create
+        // POST: Tipos_Ingresos/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdDepartamento,Nombre,Estado")] Departamentos departamentos)
+        public ActionResult Create([Bind(Include = "IdTipoIngreso,Nombre,DependeSalario,Estado")] Tipos_Ingresos tipos_Ingresos)
         {
-            //TempData["Mensaje"] = "<script>alert('Operación efectuada exitosamente!');</script>";
-
             if (ModelState.IsValid)
             {
-                unit.DepartamentoRepository.Add(departamentos);
-                unit.SaveChanges();
+                db.Tipos_Ingresos.Add(tipos_Ingresos);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(departamentos);
+            return View(tipos_Ingresos);
         }
 
-        // GET: Departamento/Edit/5
+        // GET: Tipos_Ingresos/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Departamentos departamentos = db.Departamentos.Find(id);
-            if (departamentos == null)
+            Tipos_Ingresos tipos_Ingresos = db.Tipos_Ingresos.Find(id);
+            if (tipos_Ingresos == null)
             {
                 return HttpNotFound();
             }
-            return View(departamentos);
+            return View(tipos_Ingresos);
         }
 
-        // POST: Departamento/Edit/5
+        // POST: Tipos_Ingresos/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdDepartamento,Nombre,Estado")] Departamentos departamentos)
+        public ActionResult Edit([Bind(Include = "IdTipoIngreso,Nombre,DependeSalario,Estado")] Tipos_Ingresos tipos_Ingresos)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(departamentos).State = EntityState.Modified;
+                db.Entry(tipos_Ingresos).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(departamentos);
+            return View(tipos_Ingresos);
         }
 
-        // GET: Departamento/Delete/5
+        // GET: Tipos_Ingresos/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Departamentos departamentos = db.Departamentos.Find(id);
-            if (departamentos == null)
+            Tipos_Ingresos tipos_Ingresos = db.Tipos_Ingresos.Find(id);
+            if (tipos_Ingresos == null)
             {
                 return HttpNotFound();
             }
-            return View(departamentos);
+            return View(tipos_Ingresos);
         }
 
-        // POST: Departamento/Delete/5
+        // POST: Tipos_Ingresos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Departamentos departamentos = db.Departamentos.Find(id);
-            db.Departamentos.Remove(departamentos);
+            Tipos_Ingresos tipos_Ingresos = db.Tipos_Ingresos.Find(id);
+            db.Tipos_Ingresos.Remove(tipos_Ingresos);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

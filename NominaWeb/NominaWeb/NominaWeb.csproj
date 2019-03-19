@@ -186,6 +186,7 @@
     <Compile Include="Controllers\NominaController.cs" />
     <Compile Include="Controllers\PuestoController.cs" />
     <Compile Include="Controllers\TipoDeduccionController.cs" />
+    <Compile Include="Controllers\TiposIngresosController.cs" />
     <Compile Include="Controllers\TipoTransaccionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -6707,6 +6708,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Nomina%28256px%29.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="AdminResources\bower_components\bootstrap-colorpicker\.bower.json" />
@@ -7276,6 +7278,11 @@
     <Content Include="Views\TipoTransaccion\Details.cshtml" />
     <Content Include="Views\TipoTransaccion\Edit.cshtml" />
     <Content Include="Views\TipoTransaccion\Index.cshtml" />
+    <Content Include="Views\TiposIngresos\Create.cshtml" />
+    <Content Include="Views\TiposIngresos\Delete.cshtml" />
+    <Content Include="Views\TiposIngresos\Details.cshtml" />
+    <Content Include="Views\TiposIngresos\Edit.cshtml" />
+    <Content Include="Views\TiposIngresos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

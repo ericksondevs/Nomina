@@ -37,7 +37,7 @@
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>INV</b>Control</span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>Nomina Apec</b>System</span>
+                <span class="logo-lg"><b>Nómina Apec App</b></span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
@@ -174,7 +174,7 @@
                             <i class="fa fa-money"></i>
                             <span>TRANSACCIONES</span>
                             <i class="fa fa-angle-left pull-right"></i>
-                        </a>
+                        </a>s
                         <ul class="treeview-menu">
                             <li><a href="@Url.Action("Index", "MaestroTransacciones")"><i class="glyphicon glyphicon-shopping-cart"></i> Transacciones</a></li>
                             <li><a  href="@Url.Action("Index", "MaestroTransacciones")" ><i class="glyphicon glyphicon-th-list"></i> Histórico</a></li>
@@ -192,15 +192,16 @@
                     </li>
                     <li class=" treeview">
                         <a href="#">
-                            <i class="fa fa-wrench"></i> <span>CONFIGURACIONES</span>
+                            <i class="fa fa-wrench"></i> <span>REGISTRO MAESTRO</span>
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="@Url.Action("Index", "Departamento")"><i class="glyphicon glyphicon-briefcase"></i> Departamentos</a></li>
                             <li><a href="@Url.Action("Index", "Puesto")"><i class="glyphicon glyphicon-briefcase"></i> Puestos</a></li>
-                            <li><a href="@Url.Action("Index", "TipoDeduccion")"><i class="fa fa-file-pdf-o"></i> Tipo de deducciones</a></li>
-                            <li><a href="@Url.Action("Index", "TipoTransaccion")"><i class="fa fa-file-pdf-o"></i> Tipo de transacciones</a></li>
-                            
+                            <li><a href="@Url.Action("Index", "TipoDeduccion")"><i class="fa fa-file-pdf-o"></i> Tipos de Deducciones</a></li>
+                            <li><a href="@Url.Action("Index", "TiposIngresos")"><i class="fa fa-money"></i> Tipos de Ingresos</a></li>
+                            <li><a href="@Url.Action("Index", "TipoTransaccion")"><i class="fa fa-file-text-o"></i> Tipos de Transacciones</a></li>
+
                             @*<li><a href="@Url.Action("Index", "Unit")"><i class="glyphicon glyphicon-briefcase"></i> Transacciones</a></li>*@
                             @*<li><a href="currencies.php"><i class="fa fa-usd"></i> Monedas</a></li>
                             *@

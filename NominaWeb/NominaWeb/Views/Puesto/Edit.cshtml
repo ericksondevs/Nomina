@@ -1,67 +1,72 @@
 ﻿@model NominaDataBase.Puestos
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edicion Puesto";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2 class="p-3 mb-2 bg-primary text-white col-md-8">Edición</h2>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Puestos</h4>
+
+    <div class="form-horizontal col-md-8" style="text-align:center">
+        <h3 class="p-3 mb-2 bg-info text-white col-md-2">Puestos</h3>
+        <br /><br />
+        <br />
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.IdPuesto)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Puesto, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+        <div class="form-group col-md-10">
+            @Html.LabelFor(model => model.Puesto, "Puesto:", htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-4">
                 @Html.EditorFor(model => model.Puesto, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Puesto, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.IdDepartamento, "IdDepartamento", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+        <div class="form-group col-md-10">
+            @Html.LabelFor(model => model.IdDepartamento, "Departamento:", htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-3">
                 @Html.DropDownList("IdDepartamento", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdDepartamento, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.SalarioMinimo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SalarioMinimo, new { htmlAttributes = new { @class = "form-control" } })
+        <div class="form-group col-md-10">
+            @Html.LabelFor(model => model.SalarioMinimo, "Salario Mínimo:", htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-3">
+                @Html.TextBoxFor(model => model.SalarioMinimo, new { @type = "number", @class = "form-control", @min = "0" })
                 @Html.ValidationMessageFor(model => model.SalarioMinimo, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.SalarioMaximo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SalarioMaximo, new { htmlAttributes = new { @class = "form-control" } })
+        <div class="form-group col-md-10">
+            @Html.LabelFor(model => model.SalarioMaximo, "Salario Máximo:", htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-3">
+                @Html.TextBoxFor(model => model.SalarioMaximo, new { @type = "number", @class = "form-control", @min = "0" })
                 @Html.ValidationMessageFor(model => model.SalarioMaximo, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <div class="col-md-offset-2 col-md-8">
+                <br />
+                <input type="submit" value="Guardar Puesto" class="btn btn-success" @*onsubmit="@Html.Raw(TempData["Mensaje"])"*@ />
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div class="form-horizontal col-md-10">
+    <br />
+    @Html.ActionLink("Volver Atras", "Index", new { }, new { @class = "btn btn-warning" })
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
