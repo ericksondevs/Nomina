@@ -1,12 +1,11 @@
 ﻿@model NominaDataBase.Tipos_Deducciones
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "NominaAPP - Creación Tipo de Deducción";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2 class="p-3 mb-2 bg-primary text-white col-md-8">Creación</h2>
-
 
 @using (Html.BeginForm())
 {
@@ -18,7 +17,7 @@
         <br />
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        
+
         <div class="form-group col-md-7">
             @Html.LabelFor(model => model.Nombre, "Nombre:", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-8">
@@ -70,4 +69,3 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-
