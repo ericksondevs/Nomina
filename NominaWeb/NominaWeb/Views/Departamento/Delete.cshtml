@@ -1,41 +1,53 @@
 ﻿@model NominaDataBase.Departamentos
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "NominaAPP - Eliminar Departamento";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
+<h2 class="p-3 mb-2 bg-primary text-white col-md-8">Eliminar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Departamentos</h4>
+<div class="form-horizontal col-md-8" style="text-align:center">
+
+    <h3>Esta seguro de eliminar este registro?</h3>
+
+    <h3 class="p-3 mb-2 bg-info text-white col-md-4" style="margin:120px">Departamento #@Html.DisplayFor(model => model.IdDepartamento)</h3>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
+    <br /><br />
 
-        <dd>
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
+    <div>
+        <dl class="dl-horizontal col-md-4">
+            <dt>
+                <h3 style="font-weight:bold ">@Html.DisplayNameFor(model => model.Nombre):</h3>
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Estado)
-        </dt>
+            <dd>
+                <h3>@Html.DisplayFor(model => model.Nombre)</h3>
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Estado)
-        </dd>
+            <dt>
+                <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Estado):</h3>
+            </dt>
 
-    </dl>
+            <dd>
+                <h3>@Html.DisplayFor(model => model.Estado)</h3>
+            </dd>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+        </dl>
+    </div>
+    <div class="form-horizontal col-md-12">
+        <br />
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+            <div class="form-actions no-color">
+                @Html.ActionLink("Volver Atras", "Index", new { }, new { @class = "btn btn-info" }) |
+                <input type="submit" value="Eliminar" class="btn btn-danger" />
+            </div>
+        }
+    </div>
+
 </div>
+
+

@@ -1,112 +1,120 @@
 ﻿@model IEnumerable<NominaDataBase.Nominas>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "NominaAPP - Nominas";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2 class="p-3 mb-2 bg-primary text-white col-lg-10">&nbsp;&nbsp;Nominas</h2>
+<br /><br /><br /><br />
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Nueva Nomina", "Create", new { }, new { @class = "btn btn-success" })
+    <br /><br />
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoNomina)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Banco)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fechaDesde)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fechaHasta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaEfectividad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Monto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Total_AFP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Total_ARS)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Total_ISR)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Total_ingresos)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Total_Otros_descuentos)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Observaciones)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Estado)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TipoNomina)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Banco)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fechaDesde)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fechaHasta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaEfectividad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Monto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Total_AFP)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Total_ARS)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Total_ISR)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Total_ingresos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Total_Otros_descuentos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Observaciones)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estado)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdNomina }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdNomina }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdNomina })
-        </td>
-    </tr>
-}
+<div class="col-md-16">
+    <table class="table table-bordered table-striped text-center">
+        <tr style="font-size:18px">
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayName("Tipo Nomina")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Banco)
+            </th>
+            <th>
+                @Html.DisplayName("Fecha Desde")
+            </th>
+            <th>
+                @Html.DisplayName("Fecha Hasta")
+            </th>
+            <th>
+                @Html.DisplayName("Fecha Efectividad")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Monto)
+            </th>
+            <th>
+                @Html.DisplayName("Total AFP")
+            </th>
+            <th>
+                @Html.DisplayName("Total ARS")
+            </th>
+            <th>
+                @Html.DisplayName("Total ISR")
+            </th>
+            <th>
+                @Html.DisplayName("Total Ingresos")
+            </th>
+            <th>
+                @Html.DisplayName("Total Otros Descuentos")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Observaciones)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayName("Acción")
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+        <tr style="font-size:18px">
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoNomina)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Banco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaDesde)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaHasta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaEfectividad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Monto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total_AFP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total_ARS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total_ISR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total_ingresos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total_Otros_descuentos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observaciones)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.IdNomina }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.IdNomina }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.IdNomina }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+        }
+
+    </table>

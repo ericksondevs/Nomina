@@ -37,7 +37,7 @@
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>INV</b>Control</span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>Nomina Apec</b>System</span>
+                <span class="logo-lg"><b>Sys. Nómina Apec</b></span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
@@ -81,7 +81,7 @@
                                         else
                                         {
                                             @Html.ActionLink("Iniciar Sesion", "Login", "Account", routeValues: null, htmlAttributes: new
-                                       {
+                                        {
                                            id = "loginLink",
                                            @class = "btn btn-danger btn-flat" })
                                         }
@@ -92,6 +92,7 @@
                     </ul>
                 </div>
             </nav>
+
         </header>
         <!-- Left side column. contains the logo and sidebar -->
         <aside class="main-sidebar">
@@ -123,17 +124,17 @@
                 <ul class="sidebar-menu" data-widget="tree">
                     <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> <span>INICIO</span></a></li>
                     @*<li class="active">
-                        <a href="#">
-                            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-            <li><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-            <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-        </ul>
-                    </li>*@
+                                        <a href="#">
+                                            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                                            <span class="pull-right-container">
+                                                <i class="fa fa-angle-left pull-right"></i>
+                                            </span>
+                                        </a>
+                                        <ul class="treeview-menu">
+                            <li><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+                            <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+                        </ul>
+                                    </li>*@
                     <li class=" treeview">
                         <a href="#">
                             <i class="fa fa-money"></i>
@@ -141,8 +142,8 @@
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="@Url.Action("Create", "Nomina")"><i class="glyphicon glyphicon-shopping-cart"></i> Crear Nomina</a></li>
-                            <li><a href="@Url.Action("Index", "Nomina")"><i class="glyphicon glyphicon-th-list"></i> Listado de Nominas</a></li>
+                            <li><a href="@Url.Action("Create", "Nomina")"><i class="fa fa-credit-card"></i> Crear Nomina</a></li>
+                            <li><a href="@Url.Action("Index", "Nomina")"><i class="fa fa-list-ul"></i> Listado de Nominas</a></li>
                         </ul>
                     </li>
                     <li class=" treeview">
@@ -152,10 +153,10 @@
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="@Url.Action("Index", "Empleado")"><i class="glyphicon glyphicon-th-list"></i> Lista</a></li>
-                            <li><a href="@Url.Action("Create", "Empleado")"><i class="glyphicon glyphicon-user"></i> Creacion</a></li>
+                            <li><a href="@Url.Action("Index", "Empleado")"><i class="fa fa-list-ul"></i> Lista</a></li>
+                            <li><a href="@Url.Action("Create", "Empleado")"><i class="fa fa-users"></i> Creacion</a></li>
                             @*<li><a href="@Url.Action("Index", "Empleado")"><i class="glyphicon glyphicon-briefcase"></i> Dar de Alta</a></li>
-                            <li><a href="@Url.Action("Index", "Empleado")"><i class="glyphicon glyphicon-briefcase"></i> Dar de Baja</a></li>*@
+                                <li><a href="@Url.Action("Index", "Empleado")"><i class="glyphicon glyphicon-briefcase"></i> Dar de Baja</a></li>*@
 
                         </ul>
                     </li>
@@ -174,10 +175,10 @@
                             <i class="fa fa-money"></i>
                             <span>TRANSACCIONES</span>
                             <i class="fa fa-angle-left pull-right"></i>
-                        </a>
+                        </a>s
                         <ul class="treeview-menu">
-                            <li><a href="@Url.Action("Index", "MaestroTransacciones")"><i class="glyphicon glyphicon-shopping-cart"></i> Transacciones</a></li>
-                            <li><a  href="@Url.Action("Index", "MaestroTransacciones")" ><i class="glyphicon glyphicon-th-list"></i> Histórico</a></li>
+                            <li><a href="@Url.Action("Index", "MaestroTransacciones")"><i class="fa fa-exchange"></i> Transacciones</a></li>
+                            <li><a href="@Url.Action("Index", "MaestroTransacciones")"><i class="fa fa-list-ul"></i> Histórico</a></li>
                         </ul>
                     </li>
                     <li class=" treeview">
@@ -192,15 +193,16 @@
                     </li>
                     <li class=" treeview">
                         <a href="#">
-                            <i class="fa fa-wrench"></i> <span>CONFIGURACIONES</span>
+                            <i class="fa fa-wrench"></i> <span>REGISTRO MAESTRO</span>
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="@Url.Action("Create", "Departamento")"><i class="glyphicon glyphicon-briefcase"></i> Departamentos</a></li>
-                            <li><a href="@Url.Action("Index", "Puesto")"><i class="glyphicon glyphicon-briefcase"></i> Puestos</a></li>
-                            <li><a href="@Url.Action("Index", "TipoDeduccion")"><i class="fa fa-file-pdf-o"></i> Tipo de deducciones</a></li>
-                            <li><a href="@Url.Action("Index", "TipoTransaccion")"><i class="fa fa-file-pdf-o"></i> Tipo de transacciones</a></li>
-                            
+                            <li><a href="@Url.Action("Index", "Departamento")"><i class="fa fa-building"></i> Departamentos</a></li>
+                            <li><a href="@Url.Action("Index", "Puesto")"><i class="fa fa-address-card"></i> Puestos</a></li>
+                            <li><a href="@Url.Action("Index", "TipoDeduccion")"><i class="fa fa-keyboard-o"></i> Tipos de Deducciones</a></li>
+                            <li><a href="@Url.Action("Index", "TiposIngresos")"><i class="fa fa-money"></i> Tipos de Ingresos</a></li>
+                            <li><a href="@Url.Action("Index", "TipoTransaccion")"><i class="fa fa-file-text-o"></i> Tipos de Transacciones</a></li>
+
                             @*<li><a href="@Url.Action("Index", "Unit")"><i class="glyphicon glyphicon-briefcase"></i> Transacciones</a></li>*@
                             @*<li><a href="currencies.php"><i class="fa fa-usd"></i> Monedas</a></li>
                             *@
@@ -239,8 +241,6 @@
             </div>
         </div>
     </div>
-
-
 
     <div class="control-sidebar-bg"></div>
     <!-- jQuery 3 -->

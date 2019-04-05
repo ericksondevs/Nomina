@@ -1,51 +1,54 @@
 ﻿@model NominaDataBase.Puestos
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "NominaAPP - Detalles";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2 class="p-3 mb-2 bg-primary text-white col-md-8">Detalles</h2>
 
-<div>
-    <h4>Puestos</h4>
+<div class="form-horizontal col-md-8" style="text-align:center">
+    <h3 class="p-3 mb-2 bg-info text-white col-md-4">Puesto #@Html.DisplayFor(model => model.IdPuesto)</h3>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Puesto)
-        </dt>
+    <br /><br />
+    <div>
+        <dl class="dl-horizontal col-lg-6">
+            <dt>
+                <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Puesto):</h3>
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Puesto)
-        </dd>
+            <dd>
+                <h3> @Html.DisplayFor(model => model.Puesto)</h3>
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SalarioMinimo)
-        </dt>
+            <dt>
+                <h3 style="font-weight:bold">@Html.DisplayName("Salario Mínimo:")</h3>
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.SalarioMinimo)
-        </dd>
+            <dd>
+                <h3>@Html.DisplayFor(model => model.SalarioMinimo)</h3>
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SalarioMaximo)
-        </dt>
+            <dt>
+                <h3 style="font-weight:bold">@Html.DisplayName("Salario Máximo:")</h3>
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.SalarioMaximo)
-        </dd>
+            <dd>
+                <h3>@Html.DisplayFor(model => model.SalarioMaximo)</h3>
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Departamentos.Nombre)
-        </dt>
+            <dt>
+                <h3 style="font-weight:bold">@Html.DisplayName("Departamento:")</h3>
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Departamentos.Nombre)
-        </dd>
+            <dd>
+                <h3>@Html.DisplayFor(model => model.Departamentos.Nombre)</h3>
+            </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdPuesto }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        </dl>
+    </div>
+    <div class="form-horizontal col-md-7">
+        <br />
+        @Html.ActionLink("Volver Atras", "Index", new { }, new { @class = "btn btn-info" }) |
+        @Html.ActionLink("Editar", "Edit", new { id = Model.IdDepartamento }, new { @class = "btn btn-warning" })
+    </div>

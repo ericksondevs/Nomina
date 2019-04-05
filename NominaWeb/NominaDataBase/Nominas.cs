@@ -14,13 +14,6 @@ namespace NominaDataBase
     
     public partial class Nominas
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Nominas()
-        {
-            this.Empleados = new HashSet<Empleados>();
-            this.Empleados1 = new HashSet<Empleados>();
-        }
-    
         public int IdNomina { get; set; }
         public string Nombre { get; set; }
         public string TipoNomina { get; set; }
@@ -36,10 +29,5 @@ namespace NominaDataBase
         public Nullable<decimal> Total_Otros_descuentos { get; set; }
         public string Observaciones { get; set; }
         public string Estado { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Empleados> Empleados { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Empleados> Empleados1 { get; set; }
     }
 }
