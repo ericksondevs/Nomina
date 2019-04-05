@@ -50,6 +50,8 @@ namespace NominaWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IdDepartamento,Nombre,Estado")] Departamentos departamentos)
         {
+            //TempData["Mensaje"] = "<script>alert('Operación efectuada exitosamente!');</script>";
+
             if (ModelState.IsValid)
             {
                 unit.DepartamentoRepository.Add(departamentos);

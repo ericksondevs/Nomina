@@ -1,35 +1,40 @@
 ﻿@model NominaDataBase.Departamentos
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "NominaAPP - Detalles";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2 class="p-3 mb-2 bg-primary text-white col-md-8">Detalles</h2>
 
-<div>
-    <h4>Departamentos</h4>
+<div class="form-horizontal col-md-8" style="text-align:center">
+    <h3 class="p-3 mb-2 bg-info text-white col-md-4">Departamento #@Html.DisplayFor(model => model.IdDepartamento)</h3>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
+    <br /><br />
+    <div>
+        <dl class="dl-horizontal col-md-6">
+            <dt>
+                <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Nombre):</h3>
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
+            <dd>
+                <h3>@Html.DisplayFor(model => model.Nombre)</h3>
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Estado)
-        </dt>
+            <dt>
+                <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Estado):</h3>
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Estado)
-        </dd>
+            <dd>
+                <h3>@Html.DisplayFor(model => model.Estado)</h3>
+            </dd>
 
-    </dl>
+        </dl>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdDepartamento }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div class="form-horizontal col-md-8">
+    <br />
+    @Html.ActionLink("Volver Atras", "Index", new { }, new { @class = "btn btn-info" }) |
+    @Html.ActionLink("Editar", "Edit", new { id = Model.IdDepartamento }, new { @class = "btn btn-warning" })
+</div>

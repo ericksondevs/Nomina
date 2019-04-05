@@ -43,6 +43,7 @@ namespace NominaWeb.Controllers
             ViewBag.IdNomina = new SelectList(db.Nominas, "IdNomina", "Nombre");
             ViewBag.IdPuesto = new SelectList(db.Puestos, "IdPuesto", "Puesto");
             //ViewBag.IdNomina = new SelectList(db.Nominas, "IdNomina", "Nombre");
+
             return View();
         }
 

@@ -48,13 +48,13 @@ namespace NominaWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IdNomina,Nombre,TipoNomina,Banco,fechaDesde,fechaHasta,FechaEfectividad,Monto,Total_AFP,Total_ARS,Total_ISR,Total_ingresos,Total_Otros_descuentos,Observaciones,Estado")] Nominas nominas)
         {
-            if (ModelState.IsValid)
-            {
-                db.Nominas.Add(nominas);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
+                if (ModelState.IsValid)
+                {
+                    db.Nominas.Add(nominas);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            
             return View(nominas);
         }
 
