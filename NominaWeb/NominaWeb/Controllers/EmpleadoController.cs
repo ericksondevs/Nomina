@@ -46,6 +46,32 @@ namespace NominaWeb.Controllers
             return View();
         }
 
+        public static bool validateId(string pCedula)
+        {
+            int vnTotal = 0;
+            string vcCedula = pCedula.Replace("-", "");
+            int pLongCed = vcCedula.Trim().Length;
+            int[] digitoMult = new int[11] { 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1 };
+
+            if (pLongCed < 11 || pLongCed > 11)
+                return false;
+
+            for (int vDig = 1; vDig <= pLongCed; vDig++)
+            {
+                int vCalculo = Int32.Parse(vcCedula.Substring(vDig - 1, 1)) * digitoMult[vDig - 1];
+                if (vCalculo < 10)
+                    vnTotal += vCalculo;
+                else
+                    vnTotal += Int32.Parse(vCalculo.ToString().Substring(0, 1)) + Int32.Parse(vCalculo.ToString().Substring(1, 1));
+            }
+
+            if (vnTotal % 10 == 0)
+                return true;
+            else
+                return false;
+
+        }
+
         // POST: Empleado/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -55,9 +81,17 @@ namespace NominaWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Empleados.Add(empleados);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (!validateId(empleados.Cedula))
+                {
+                    ViewBag.CedulaErrorMessage = "La cedula es incorrecta";
+                    //return View();
+                }
+                else
+                {
+                    db.Empleados.Add(empleados);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
 
             ViewBag.IdDepartamento = new SelectList(db.Departamentos, "IdDepartamento", "Nombre", empleados.IdDepartamento);
