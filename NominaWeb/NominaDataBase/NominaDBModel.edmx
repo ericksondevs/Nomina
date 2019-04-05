@@ -4,310 +4,277 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="NominaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="AsientosContables">
-          <Key>
-            <PropertyRef Name="IdAsiento" />
-          </Key>
-          <Property Name="IdAsiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="IdEmpleado" Type="int" Nullable="false" />
-          <Property Name="Cuenta" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="TipoMovimiento" Type="varchar" MaxLength="2" Nullable="false" />
-          <Property Name="FechaAsiento" Type="date" Nullable="false" />
-          <Property Name="MontoAsiento" Type="numeric" Precision="15" Scale="2" Nullable="false" />
-          <Property Name="Estado" Type="char" MaxLength="1" />
-        </EntityType>
-        <EntityType Name="Departamentos">
-          <Key>
-            <PropertyRef Name="IdDepartamento" />
-          </Key>
-          <Property Name="IdDepartamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Estado" Type="char" MaxLength="1" />
-        </EntityType>
-        <EntityType Name="Detalle_Transacciones">
-          <Key>
-            <PropertyRef Name="IdTransaccion" />
-          </Key>
-          <Property Name="IdTransaccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Fecha" Type="date" Nullable="false" />
-          <Property Name="Monto" Type="numeric" Precision="15" Scale="2" Nullable="false" />
-          <Property Name="Estado" Type="char" MaxLength="1" />
-          <Property Name="IdMaestroTransaccion" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Empleados">
-          <Key>
-            <PropertyRef Name="IdEmpleado" />
-          </Key>
-          <Property Name="IdEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Cedula" Type="varchar" MaxLength="25" Nullable="false" />
-          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Apellido" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="IdDepartamento" Type="int" Nullable="false" />
-          <Property Name="IdPuesto" Type="int" Nullable="false" />
-          <Property Name="Salario" Type="numeric" Precision="15" Scale="2" Nullable="false" />
-          <Property Name="Salario_H_Extra" Type="numeric" Precision="15" Scale="2" />
-          <Property Name="Salario_H_Ordinarias" Type="numeric" Precision="15" Scale="2" />
-          <Property Name="FechaIngreso" Type="date" Nullable="false" />
-          <Property Name="IdNomina" Type="int" Nullable="false" />
-          <Property Name="Estado" Type="char" MaxLength="1" />
-        </EntityType>
-        <EntityType Name="Maestro_Transacciones">
-          <Key>
-            <PropertyRef Name="IdTransaccion" />
-          </Key>
-          <Property Name="IdTransaccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdEmpleado" Type="int" Nullable="false" />
-          <Property Name="IdTipoIngreso" Type="int" Nullable="false" />
-          <Property Name="IdTipoDeduccion" Type="int" Nullable="false" />
-          <Property Name="Estado" Type="char" MaxLength="1" />
-          <Property Name="TipoTransaccion" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Nominas">
-          <Key>
-            <PropertyRef Name="IdNomina" />
-          </Key>
-          <Property Name="IdNomina" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="varchar" MaxLength="75" Nullable="false" />
-          <Property Name="TipoNomina" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Banco" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="fechaDesde" Type="date" Nullable="false" />
-          <Property Name="fechaHasta" Type="date" Nullable="false" />
-          <Property Name="FechaEfectividad" Type="date" Nullable="false" />
-          <Property Name="Monto" Type="numeric" Precision="15" Scale="2" Nullable="false" />
-          <Property Name="Total_AFP" Type="numeric" Precision="15" Scale="2" />
-          <Property Name="Total_ARS" Type="numeric" Precision="15" Scale="2" />
-          <Property Name="Total_ISR" Type="numeric" Precision="15" Scale="2" />
-          <Property Name="Total_ingresos" Type="numeric" Precision="15" Scale="2" />
-          <Property Name="Total_Otros_descuentos" Type="numeric" Precision="15" Scale="2" />
-          <Property Name="Observaciones" Type="varchar" MaxLength="100" />
-          <Property Name="Estado" Type="char" MaxLength="1" />
-        </EntityType>
-        <EntityType Name="Puestos">
-          <Key>
-            <PropertyRef Name="IdPuesto" />
-          </Key>
-          <Property Name="IdPuesto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Puesto" Type="varchar" MaxLength="250" Nullable="false" />
-          <Property Name="IdDepartamento" Type="int" Nullable="false" />
-          <Property Name="SalarioMinimo" Type="numeric" Precision="15" Scale="2" Nullable="false" />
-          <Property Name="SalarioMaximo" Type="numeric" Precision="15" Scale="2" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Tipos_Deducciones">
-          <Key>
-            <PropertyRef Name="IdTipoDeduccion" />
-          </Key>
-          <Property Name="IdTipoDeduccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="DependeSalario" Type="char" MaxLength="1" Nullable="false" />
-          <Property Name="Estado" Type="char" MaxLength="1" />
-        </EntityType>
-        <EntityType Name="Tipos_Ingresos">
-          <Key>
-            <PropertyRef Name="IdTipoIngreso" />
-          </Key>
-          <Property Name="IdTipoIngreso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="DependeSalario" Type="char" MaxLength="1" Nullable="false" />
-          <Property Name="Estado" Type="char" MaxLength="1" />
-        </EntityType>
-        <EntityType Name="TipoTransaccion">
-          <Key>
-            <PropertyRef Name="IdTipoTransaccion" />
-          </Key>
-          <Property Name="IdTipoTransaccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
-        </EntityType>
-        <Association Name="FK__Detalle_T__IdMae__5CD6CB2B">
-          <End Role="Maestro_Transacciones" Type="Self.Maestro_Transacciones" Multiplicity="1" />
-          <End Role="Detalle_Transacciones" Type="Self.Detalle_Transacciones" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Maestro_Transacciones">
-              <PropertyRef Name="IdTransaccion" />
-            </Principal>
-            <Dependent Role="Detalle_Transacciones">
-              <PropertyRef Name="IdMaestroTransaccion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Maestro_T__TipoT__71D1E811">
-          <End Role="TipoTransaccion" Type="Self.TipoTransaccion" Multiplicity="1" />
-          <End Role="Maestro_Transacciones" Type="Self.Maestro_Transacciones" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TipoTransaccion">
-              <PropertyRef Name="IdTipoTransaccion" />
-            </Principal>
-            <Dependent Role="Maestro_Transacciones">
-              <PropertyRef Name="TipoTransaccion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Fk_Empl_Asiento">
-          <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
-          <End Role="AsientosContables" Type="Self.AsientosContables" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empleados">
-              <PropertyRef Name="IdEmpleado" />
-            </Principal>
-            <Dependent Role="AsientosContables">
-              <PropertyRef Name="IdEmpleado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Fk_Empl_Depart">
-          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1" />
-          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Departamentos">
-              <PropertyRef Name="IdDepartamento" />
-            </Principal>
-            <Dependent Role="Empleados">
-              <PropertyRef Name="IdDepartamento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Fk_Empl_Nomina">
-          <End Role="Nominas" Type="Self.Nominas" Multiplicity="1" />
-          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Nominas">
-              <PropertyRef Name="IdNomina" />
-            </Principal>
-            <Dependent Role="Empleados">
-              <PropertyRef Name="IdNomina" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Fk_Empl_Puesto">
-          <End Role="Puestos" Type="Self.Puestos" Multiplicity="1" />
-          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Puestos">
-              <PropertyRef Name="IdPuesto" />
-            </Principal>
-            <Dependent Role="Empleados">
-              <PropertyRef Name="IdPuesto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Fk_Empl_Transa">
-          <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
-          <End Role="Maestro_Transacciones" Type="Self.Maestro_Transacciones" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empleados">
-              <PropertyRef Name="IdEmpleado" />
-            </Principal>
-            <Dependent Role="Maestro_Transacciones">
-              <PropertyRef Name="IdEmpleado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Fk_Nom_Empl">
-          <End Role="Nominas" Type="Self.Nominas" Multiplicity="1" />
-          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Nominas">
-              <PropertyRef Name="IdNomina" />
-            </Principal>
-            <Dependent Role="Empleados">
-              <PropertyRef Name="IdNomina" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Puest_Depart">
-          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1" />
-          <End Role="Puestos" Type="Self.Puestos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Departamentos">
-              <PropertyRef Name="IdDepartamento" />
-            </Principal>
-            <Dependent Role="Puestos">
-              <PropertyRef Name="IdDepartamento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Fk_TipDeduc_Transa">
-          <End Role="Tipos_Deducciones" Type="Self.Tipos_Deducciones" Multiplicity="1" />
-          <End Role="Maestro_Transacciones" Type="Self.Maestro_Transacciones" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tipos_Deducciones">
-              <PropertyRef Name="IdTipoDeduccion" />
-            </Principal>
-            <Dependent Role="Maestro_Transacciones">
-              <PropertyRef Name="IdTipoDeduccion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TipIngr_Transa">
-          <End Role="Tipos_Ingresos" Type="Self.Tipos_Ingresos" Multiplicity="1" />
-          <End Role="Maestro_Transacciones" Type="Self.Maestro_Transacciones" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tipos_Ingresos">
-              <PropertyRef Name="IdTipoIngreso" />
-            </Principal>
-            <Dependent Role="Maestro_Transacciones">
-              <PropertyRef Name="IdTipoIngreso" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="NominaDBModelStoreContainer">
-          <EntitySet Name="AsientosContables" EntityType="Self.AsientosContables" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Detalle_Transacciones" EntityType="Self.Detalle_Transacciones" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Maestro_Transacciones" EntityType="Self.Maestro_Transacciones" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Nominas" EntityType="Self.Nominas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Puestos" EntityType="Self.Puestos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tipos_Deducciones" EntityType="Self.Tipos_Deducciones" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tipos_Ingresos" EntityType="Self.Tipos_Ingresos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TipoTransaccion" EntityType="Self.TipoTransaccion" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Detalle_T__IdMae__5CD6CB2B" Association="Self.FK__Detalle_T__IdMae__5CD6CB2B">
-            <End Role="Maestro_Transacciones" EntitySet="Maestro_Transacciones" />
-            <End Role="Detalle_Transacciones" EntitySet="Detalle_Transacciones" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Maestro_T__TipoT__71D1E811" Association="Self.FK__Maestro_T__TipoT__71D1E811">
-            <End Role="TipoTransaccion" EntitySet="TipoTransaccion" />
-            <End Role="Maestro_Transacciones" EntitySet="Maestro_Transacciones" />
-          </AssociationSet>
-          <AssociationSet Name="Fk_Empl_Asiento" Association="Self.Fk_Empl_Asiento">
-            <End Role="Empleados" EntitySet="Empleados" />
-            <End Role="AsientosContables" EntitySet="AsientosContables" />
-          </AssociationSet>
-          <AssociationSet Name="Fk_Empl_Depart" Association="Self.Fk_Empl_Depart">
-            <End Role="Departamentos" EntitySet="Departamentos" />
-            <End Role="Empleados" EntitySet="Empleados" />
-          </AssociationSet>
-          <AssociationSet Name="Fk_Empl_Nomina" Association="Self.Fk_Empl_Nomina">
-            <End Role="Nominas" EntitySet="Nominas" />
-            <End Role="Empleados" EntitySet="Empleados" />
-          </AssociationSet>
-          <AssociationSet Name="Fk_Empl_Puesto" Association="Self.Fk_Empl_Puesto">
-            <End Role="Puestos" EntitySet="Puestos" />
-            <End Role="Empleados" EntitySet="Empleados" />
-          </AssociationSet>
-          <AssociationSet Name="Fk_Empl_Transa" Association="Self.Fk_Empl_Transa">
-            <End Role="Empleados" EntitySet="Empleados" />
-            <End Role="Maestro_Transacciones" EntitySet="Maestro_Transacciones" />
-          </AssociationSet>
-          <AssociationSet Name="Fk_Nom_Empl" Association="Self.Fk_Nom_Empl">
-            <End Role="Nominas" EntitySet="Nominas" />
-            <End Role="Empleados" EntitySet="Empleados" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Puest_Depart" Association="Self.fk_Puest_Depart">
-            <End Role="Departamentos" EntitySet="Departamentos" />
-            <End Role="Puestos" EntitySet="Puestos" />
-          </AssociationSet>
-          <AssociationSet Name="Fk_TipDeduc_Transa" Association="Self.Fk_TipDeduc_Transa">
-            <End Role="Tipos_Deducciones" EntitySet="Tipos_Deducciones" />
-            <End Role="Maestro_Transacciones" EntitySet="Maestro_Transacciones" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TipIngr_Transa" Association="Self.FK_TipIngr_Transa">
-            <End Role="Tipos_Ingresos" EntitySet="Tipos_Ingresos" />
-            <End Role="Maestro_Transacciones" EntitySet="Maestro_Transacciones" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema></edmx:StorageModels>
+    <Schema Namespace="NominaDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="NominaDBModelStoreContainer">
+    <EntitySet Name="AsientosContables" EntityType="NominaDBModel.Store.AsientosContables" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Departamentos" EntityType="NominaDBModel.Store.Departamentos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Detalle_Transacciones" EntityType="NominaDBModel.Store.Detalle_Transacciones" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Empleados" EntityType="NominaDBModel.Store.Empleados" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Maestro_Transacciones" EntityType="NominaDBModel.Store.Maestro_Transacciones" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Nominas" EntityType="NominaDBModel.Store.Nominas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Puestos" EntityType="NominaDBModel.Store.Puestos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tipos_Deducciones" EntityType="NominaDBModel.Store.Tipos_Deducciones" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tipos_Ingresos" EntityType="NominaDBModel.Store.Tipos_Ingresos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TipoTransaccion" EntityType="NominaDBModel.Store.TipoTransaccion" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="Fk_Empl_Asiento" Association="NominaDBModel.Store.Fk_Empl_Asiento">
+      <End Role="Empleados" EntitySet="Empleados" />
+      <End Role="AsientosContables" EntitySet="AsientosContables" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Empl_Depart" Association="NominaDBModel.Store.Fk_Empl_Depart">
+      <End Role="Departamentos" EntitySet="Departamentos" />
+      <End Role="Empleados" EntitySet="Empleados" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Puest_Depart" Association="NominaDBModel.Store.fk_Puest_Depart">
+      <End Role="Departamentos" EntitySet="Departamentos" />
+      <End Role="Puestos" EntitySet="Puestos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Detalle_T__IdMae__5CD6CB2B" Association="NominaDBModel.Store.FK__Detalle_T__IdMae__5CD6CB2B">
+      <End Role="Maestro_Transacciones" EntitySet="Maestro_Transacciones" />
+      <End Role="Detalle_Transacciones" EntitySet="Detalle_Transacciones" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Empl_Puesto" Association="NominaDBModel.Store.Fk_Empl_Puesto">
+      <End Role="Puestos" EntitySet="Puestos" />
+      <End Role="Empleados" EntitySet="Empleados" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Empl_Transa" Association="NominaDBModel.Store.Fk_Empl_Transa">
+      <End Role="Empleados" EntitySet="Empleados" />
+      <End Role="Maestro_Transacciones" EntitySet="Maestro_Transacciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Maestro_T__TipoT__71D1E811" Association="NominaDBModel.Store.FK__Maestro_T__TipoT__71D1E811">
+      <End Role="TipoTransaccion" EntitySet="TipoTransaccion" />
+      <End Role="Maestro_Transacciones" EntitySet="Maestro_Transacciones" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_TipDeduc_Transa" Association="NominaDBModel.Store.Fk_TipDeduc_Transa">
+      <End Role="Tipos_Deducciones" EntitySet="Tipos_Deducciones" />
+      <End Role="Maestro_Transacciones" EntitySet="Maestro_Transacciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TipIngr_Transa" Association="NominaDBModel.Store.FK_TipIngr_Transa">
+      <End Role="Tipos_Ingresos" EntitySet="Tipos_Ingresos" />
+      <End Role="Maestro_Transacciones" EntitySet="Maestro_Transacciones" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AsientosContables">
+    <Key>
+      <PropertyRef Name="IdAsiento" />
+    </Key>
+    <Property Name="IdAsiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="IdEmpleado" Type="int" Nullable="false" />
+    <Property Name="Cuenta" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="TipoMovimiento" Type="varchar" Nullable="false" MaxLength="2" />
+    <Property Name="FechaAsiento" Type="datetime" Nullable="false" />
+    <Property Name="MontoAsiento" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+    <Property Name="Estado" Type="char" Nullable="true" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Departamentos">
+    <Key>
+      <PropertyRef Name="IdDepartamento" />
+    </Key>
+    <Property Name="IdDepartamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Estado" Type="char" Nullable="true" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Detalle_Transacciones">
+    <Key>
+      <PropertyRef Name="IdTransaccion" />
+    </Key>
+    <Property Name="IdTransaccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="Monto" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+    <Property Name="Estado" Type="char" Nullable="true" MaxLength="1" />
+    <Property Name="IdMaestroTransaccion" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Empleados">
+    <Key>
+      <PropertyRef Name="IdEmpleado" />
+    </Key>
+    <Property Name="IdEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cedula" Type="varchar" Nullable="false" MaxLength="25" />
+    <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Apellido" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="IdDepartamento" Type="int" Nullable="false" />
+    <Property Name="IdPuesto" Type="int" Nullable="false" />
+    <Property Name="Salario" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+    <Property Name="Salario_H_Extra" Type="decimal" Nullable="true" Precision="15" Scale="2" />
+    <Property Name="Salario_H_Ordinarias" Type="decimal" Nullable="true" Precision="15" Scale="2" />
+    <Property Name="FechaIngreso" Type="datetime" Nullable="false" />
+    <Property Name="Estado" Type="char" Nullable="true" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Maestro_Transacciones">
+    <Key>
+      <PropertyRef Name="IdTransaccion" />
+    </Key>
+    <Property Name="IdTransaccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEmpleado" Type="int" Nullable="false" />
+    <Property Name="IdTipoIngreso" Type="int" Nullable="false" />
+    <Property Name="IdTipoDeduccion" Type="int" Nullable="false" />
+    <Property Name="Estado" Type="char" Nullable="true" MaxLength="1" />
+    <Property Name="TipoTransaccion" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Nominas">
+    <Key>
+      <PropertyRef Name="IdNomina" />
+    </Key>
+    <Property Name="IdNomina" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="75" />
+    <Property Name="TipoNomina" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Banco" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="fechaDesde" Type="datetime" Nullable="false" />
+    <Property Name="fechaHasta" Type="datetime" Nullable="false" />
+    <Property Name="FechaEfectividad" Type="datetime" Nullable="false" />
+    <Property Name="Monto" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+    <Property Name="Total_AFP" Type="decimal" Nullable="true" Precision="15" Scale="2" />
+    <Property Name="Total_ARS" Type="decimal" Nullable="true" Precision="15" Scale="2" />
+    <Property Name="Total_ISR" Type="decimal" Nullable="true" Precision="15" Scale="2" />
+    <Property Name="Total_ingresos" Type="decimal" Nullable="true" Precision="15" Scale="2" />
+    <Property Name="Total_Otros_descuentos" Type="decimal" Nullable="true" Precision="15" Scale="2" />
+    <Property Name="Observaciones" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="Estado" Type="char" Nullable="true" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Puestos">
+    <Key>
+      <PropertyRef Name="IdPuesto" />
+    </Key>
+    <Property Name="IdPuesto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Puesto" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="IdDepartamento" Type="int" Nullable="false" />
+    <Property Name="SalarioMinimo" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+    <Property Name="SalarioMaximo" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+  </EntityType>
+  <EntityType Name="Tipos_Deducciones">
+    <Key>
+      <PropertyRef Name="IdTipoDeduccion" />
+    </Key>
+    <Property Name="IdTipoDeduccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="DependeSalario" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="Estado" Type="char" Nullable="true" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Tipos_Ingresos">
+    <Key>
+      <PropertyRef Name="IdTipoIngreso" />
+    </Key>
+    <Property Name="IdTipoIngreso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="DependeSalario" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="Estado" Type="char" Nullable="true" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="TipoTransaccion">
+    <Key>
+      <PropertyRef Name="IdTipoTransaccion" />
+    </Key>
+    <Property Name="IdTipoTransaccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <Association Name="Fk_Empl_Asiento">
+    <End Role="Empleados" Type="NominaDBModel.Store.Empleados" Multiplicity="1" />
+    <End Role="AsientosContables" Type="NominaDBModel.Store.AsientosContables" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleados">
+        <PropertyRef Name="IdEmpleado" />
+      </Principal>
+      <Dependent Role="AsientosContables">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Empl_Depart">
+    <End Role="Departamentos" Type="NominaDBModel.Store.Departamentos" Multiplicity="1" />
+    <End Role="Empleados" Type="NominaDBModel.Store.Empleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departamentos">
+        <PropertyRef Name="IdDepartamento" />
+      </Principal>
+      <Dependent Role="Empleados">
+        <PropertyRef Name="IdDepartamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Puest_Depart">
+    <End Role="Departamentos" Type="NominaDBModel.Store.Departamentos" Multiplicity="1" />
+    <End Role="Puestos" Type="NominaDBModel.Store.Puestos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departamentos">
+        <PropertyRef Name="IdDepartamento" />
+      </Principal>
+      <Dependent Role="Puestos">
+        <PropertyRef Name="IdDepartamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Detalle_T__IdMae__5CD6CB2B">
+    <End Role="Maestro_Transacciones" Type="NominaDBModel.Store.Maestro_Transacciones" Multiplicity="1" />
+    <End Role="Detalle_Transacciones" Type="NominaDBModel.Store.Detalle_Transacciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Maestro_Transacciones">
+        <PropertyRef Name="IdTransaccion" />
+      </Principal>
+      <Dependent Role="Detalle_Transacciones">
+        <PropertyRef Name="IdMaestroTransaccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Empl_Puesto">
+    <End Role="Puestos" Type="NominaDBModel.Store.Puestos" Multiplicity="1" />
+    <End Role="Empleados" Type="NominaDBModel.Store.Empleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Puestos">
+        <PropertyRef Name="IdPuesto" />
+      </Principal>
+      <Dependent Role="Empleados">
+        <PropertyRef Name="IdPuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Empl_Transa">
+    <End Role="Empleados" Type="NominaDBModel.Store.Empleados" Multiplicity="1" />
+    <End Role="Maestro_Transacciones" Type="NominaDBModel.Store.Maestro_Transacciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleados">
+        <PropertyRef Name="IdEmpleado" />
+      </Principal>
+      <Dependent Role="Maestro_Transacciones">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Maestro_T__TipoT__71D1E811">
+    <End Role="TipoTransaccion" Type="NominaDBModel.Store.TipoTransaccion" Multiplicity="1" />
+    <End Role="Maestro_Transacciones" Type="NominaDBModel.Store.Maestro_Transacciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoTransaccion">
+        <PropertyRef Name="IdTipoTransaccion" />
+      </Principal>
+      <Dependent Role="Maestro_Transacciones">
+        <PropertyRef Name="TipoTransaccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_TipDeduc_Transa">
+    <End Role="Tipos_Deducciones" Type="NominaDBModel.Store.Tipos_Deducciones" Multiplicity="1" />
+    <End Role="Maestro_Transacciones" Type="NominaDBModel.Store.Maestro_Transacciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipos_Deducciones">
+        <PropertyRef Name="IdTipoDeduccion" />
+      </Principal>
+      <Dependent Role="Maestro_Transacciones">
+        <PropertyRef Name="IdTipoDeduccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TipIngr_Transa">
+    <End Role="Tipos_Ingresos" Type="NominaDBModel.Store.Tipos_Ingresos" Multiplicity="1" />
+    <End Role="Maestro_Transacciones" Type="NominaDBModel.Store.Maestro_Transacciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipos_Ingresos">
+        <PropertyRef Name="IdTipoIngreso" />
+      </Principal>
+      <Dependent Role="Maestro_Transacciones">
+        <PropertyRef Name="IdTipoIngreso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="NominaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -338,10 +305,6 @@
             <End Role="Maestro_Transacciones" EntitySet="Maestro_Transacciones" />
             <End Role="Detalle_Transacciones" EntitySet="Detalle_Transacciones" />
           </AssociationSet>
-          <AssociationSet Name="Fk_Empl_Nomina" Association="NominaDBModel.Fk_Empl_Nomina">
-            <End Role="Nominas" EntitySet="Nominas" />
-            <End Role="Empleados" EntitySet="Empleados" />
-          </AssociationSet>
           <AssociationSet Name="Fk_Empl_Puesto" Association="NominaDBModel.Fk_Empl_Puesto">
             <End Role="Puestos" EntitySet="Puestos" />
             <End Role="Empleados" EntitySet="Empleados" />
@@ -349,10 +312,6 @@
           <AssociationSet Name="Fk_Empl_Transa" Association="NominaDBModel.Fk_Empl_Transa">
             <End Role="Empleados" EntitySet="Empleados" />
             <End Role="Maestro_Transacciones" EntitySet="Maestro_Transacciones" />
-          </AssociationSet>
-          <AssociationSet Name="Fk_Nom_Empl" Association="NominaDBModel.Fk_Nom_Empl">
-            <End Role="Nominas" EntitySet="Nominas" />
-            <End Role="Empleados" EntitySet="Empleados" />
           </AssociationSet>
           <AssociationSet Name="FK__Maestro_T__TipoT__71D1E811" Association="NominaDBModel.FK__Maestro_T__TipoT__71D1E811">
             <End Role="TipoTransaccion" EntitySet="TipoTransaccion" />
@@ -416,14 +375,11 @@
           <Property Name="Salario_H_Extra" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="Salario_H_Ordinarias" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="IdNomina" Type="Int32" Nullable="false" />
           <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="AsientosContables" Relationship="NominaDBModel.Fk_Empl_Asiento" FromRole="Empleados" ToRole="AsientosContables" />
           <NavigationProperty Name="Departamentos" Relationship="NominaDBModel.Fk_Empl_Depart" FromRole="Empleados" ToRole="Departamentos" />
-          <NavigationProperty Name="Nominas" Relationship="NominaDBModel.Fk_Empl_Nomina" FromRole="Empleados" ToRole="Nominas" />
           <NavigationProperty Name="Puestos" Relationship="NominaDBModel.Fk_Empl_Puesto" FromRole="Empleados" ToRole="Puestos" />
           <NavigationProperty Name="Maestro_Transacciones" Relationship="NominaDBModel.Fk_Empl_Transa" FromRole="Empleados" ToRole="Maestro_Transacciones" />
-          <NavigationProperty Name="Nominas1" Relationship="NominaDBModel.Fk_Nom_Empl" FromRole="Empleados" ToRole="Nominas" />
         </EntityType>
         <EntityType Name="Maestro_Transacciones">
           <Key>
@@ -460,8 +416,6 @@
           <Property Name="Total_Otros_descuentos" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="Observaciones" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Empleados" Relationship="NominaDBModel.Fk_Empl_Nomina" FromRole="Nominas" ToRole="Empleados" />
-          <NavigationProperty Name="Empleados1" Relationship="NominaDBModel.Fk_Nom_Empl" FromRole="Nominas" ToRole="Empleados" />
         </EntityType>
         <EntityType Name="Puestos">
           <Key>
@@ -551,18 +505,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Fk_Empl_Nomina">
-          <End Type="NominaDBModel.Nominas" Role="Nominas" Multiplicity="1" />
-          <End Type="NominaDBModel.Empleados" Role="Empleados" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Nominas">
-              <PropertyRef Name="IdNomina" />
-            </Principal>
-            <Dependent Role="Empleados">
-              <PropertyRef Name="IdNomina" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="Fk_Empl_Puesto">
           <End Type="NominaDBModel.Puestos" Role="Puestos" Multiplicity="1" />
           <End Type="NominaDBModel.Empleados" Role="Empleados" Multiplicity="*" />
@@ -584,18 +526,6 @@
             </Principal>
             <Dependent Role="Maestro_Transacciones">
               <PropertyRef Name="IdEmpleado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Fk_Nom_Empl">
-          <End Type="NominaDBModel.Nominas" Role="Nominas" Multiplicity="1" />
-          <End Type="NominaDBModel.Empleados" Role="Empleados" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Nominas">
-              <PropertyRef Name="IdNomina" />
-            </Principal>
-            <Dependent Role="Empleados">
-              <PropertyRef Name="IdNomina" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -641,131 +571,130 @@
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="NominaDBModelStoreContainer" CdmEntityContainer="NominaDBEntities">
-          <EntitySetMapping Name="AsientosContables">
-            <EntityTypeMapping TypeName="NominaDBModel.AsientosContables">
-              <MappingFragment StoreEntitySet="AsientosContables">
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="MontoAsiento" ColumnName="MontoAsiento" />
-                <ScalarProperty Name="FechaAsiento" ColumnName="FechaAsiento" />
-                <ScalarProperty Name="TipoMovimiento" ColumnName="TipoMovimiento" />
-                <ScalarProperty Name="Cuenta" ColumnName="Cuenta" />
-                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="IdAsiento" ColumnName="IdAsiento" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Departamentos">
-            <EntityTypeMapping TypeName="NominaDBModel.Departamentos">
-              <MappingFragment StoreEntitySet="Departamentos">
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Detalle_Transacciones">
-            <EntityTypeMapping TypeName="NominaDBModel.Detalle_Transacciones">
-              <MappingFragment StoreEntitySet="Detalle_Transacciones">
-                <ScalarProperty Name="IdMaestroTransaccion" ColumnName="IdMaestroTransaccion" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Monto" ColumnName="Monto" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="IdTransaccion" ColumnName="IdTransaccion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Empleados">
-            <EntityTypeMapping TypeName="NominaDBModel.Empleados">
-              <MappingFragment StoreEntitySet="Empleados">
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="IdNomina" ColumnName="IdNomina" />
-                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
-                <ScalarProperty Name="Salario_H_Ordinarias" ColumnName="Salario_H_Ordinarias" />
-                <ScalarProperty Name="Salario_H_Extra" ColumnName="Salario_H_Extra" />
-                <ScalarProperty Name="Salario" ColumnName="Salario" />
-                <ScalarProperty Name="IdPuesto" ColumnName="IdPuesto" />
-                <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
-                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
-                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Maestro_Transacciones">
-            <EntityTypeMapping TypeName="NominaDBModel.Maestro_Transacciones">
-              <MappingFragment StoreEntitySet="Maestro_Transacciones">
-                <ScalarProperty Name="TipoTransaccion" ColumnName="TipoTransaccion" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="IdTipoDeduccion" ColumnName="IdTipoDeduccion" />
-                <ScalarProperty Name="IdTipoIngreso" ColumnName="IdTipoIngreso" />
-                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
-                <ScalarProperty Name="IdTransaccion" ColumnName="IdTransaccion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Nominas">
-            <EntityTypeMapping TypeName="NominaDBModel.Nominas">
-              <MappingFragment StoreEntitySet="Nominas">
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
-                <ScalarProperty Name="Total_Otros_descuentos" ColumnName="Total_Otros_descuentos" />
-                <ScalarProperty Name="Total_ingresos" ColumnName="Total_ingresos" />
-                <ScalarProperty Name="Total_ISR" ColumnName="Total_ISR" />
-                <ScalarProperty Name="Total_ARS" ColumnName="Total_ARS" />
-                <ScalarProperty Name="Total_AFP" ColumnName="Total_AFP" />
-                <ScalarProperty Name="Monto" ColumnName="Monto" />
-                <ScalarProperty Name="FechaEfectividad" ColumnName="FechaEfectividad" />
-                <ScalarProperty Name="fechaHasta" ColumnName="fechaHasta" />
-                <ScalarProperty Name="fechaDesde" ColumnName="fechaDesde" />
-                <ScalarProperty Name="Banco" ColumnName="Banco" />
-                <ScalarProperty Name="TipoNomina" ColumnName="TipoNomina" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="IdNomina" ColumnName="IdNomina" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Puestos">
-            <EntityTypeMapping TypeName="NominaDBModel.Puestos">
-              <MappingFragment StoreEntitySet="Puestos">
-                <ScalarProperty Name="SalarioMaximo" ColumnName="SalarioMaximo" />
-                <ScalarProperty Name="SalarioMinimo" ColumnName="SalarioMinimo" />
-                <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
-                <ScalarProperty Name="Puesto" ColumnName="Puesto" />
-                <ScalarProperty Name="IdPuesto" ColumnName="IdPuesto" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tipos_Deducciones">
-            <EntityTypeMapping TypeName="NominaDBModel.Tipos_Deducciones">
-              <MappingFragment StoreEntitySet="Tipos_Deducciones">
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="DependeSalario" ColumnName="DependeSalario" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="IdTipoDeduccion" ColumnName="IdTipoDeduccion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tipos_Ingresos">
-            <EntityTypeMapping TypeName="NominaDBModel.Tipos_Ingresos">
-              <MappingFragment StoreEntitySet="Tipos_Ingresos">
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="DependeSalario" ColumnName="DependeSalario" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="IdTipoIngreso" ColumnName="IdTipoIngreso" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TipoTransaccion">
-            <EntityTypeMapping TypeName="NominaDBModel.TipoTransaccion">
-              <MappingFragment StoreEntitySet="TipoTransaccion">
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="IdTipoTransaccion" ColumnName="IdTipoTransaccion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
+    <EntitySetMapping Name="AsientosContables">
+      <EntityTypeMapping TypeName="IsTypeOf(NominaDBModel.AsientosContables)">
+        <MappingFragment StoreEntitySet="AsientosContables">
+          <ScalarProperty Name="IdAsiento" ColumnName="IdAsiento" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+          <ScalarProperty Name="Cuenta" ColumnName="Cuenta" />
+          <ScalarProperty Name="TipoMovimiento" ColumnName="TipoMovimiento" />
+          <ScalarProperty Name="FechaAsiento" ColumnName="FechaAsiento" />
+          <ScalarProperty Name="MontoAsiento" ColumnName="MontoAsiento" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departamentos">
+      <EntityTypeMapping TypeName="IsTypeOf(NominaDBModel.Departamentos)">
+        <MappingFragment StoreEntitySet="Departamentos">
+          <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Detalle_Transacciones">
+      <EntityTypeMapping TypeName="IsTypeOf(NominaDBModel.Detalle_Transacciones)">
+        <MappingFragment StoreEntitySet="Detalle_Transacciones">
+          <ScalarProperty Name="IdTransaccion" ColumnName="IdTransaccion" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="IdMaestroTransaccion" ColumnName="IdMaestroTransaccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleados">
+      <EntityTypeMapping TypeName="IsTypeOf(NominaDBModel.Empleados)">
+        <MappingFragment StoreEntitySet="Empleados">
+          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+          <ScalarProperty Name="IdPuesto" ColumnName="IdPuesto" />
+          <ScalarProperty Name="Salario" ColumnName="Salario" />
+          <ScalarProperty Name="Salario_H_Extra" ColumnName="Salario_H_Extra" />
+          <ScalarProperty Name="Salario_H_Ordinarias" ColumnName="Salario_H_Ordinarias" />
+          <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maestro_Transacciones">
+      <EntityTypeMapping TypeName="IsTypeOf(NominaDBModel.Maestro_Transacciones)">
+        <MappingFragment StoreEntitySet="Maestro_Transacciones">
+          <ScalarProperty Name="IdTransaccion" ColumnName="IdTransaccion" />
+          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+          <ScalarProperty Name="IdTipoIngreso" ColumnName="IdTipoIngreso" />
+          <ScalarProperty Name="IdTipoDeduccion" ColumnName="IdTipoDeduccion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="TipoTransaccion" ColumnName="TipoTransaccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nominas">
+      <EntityTypeMapping TypeName="IsTypeOf(NominaDBModel.Nominas)">
+        <MappingFragment StoreEntitySet="Nominas">
+          <ScalarProperty Name="IdNomina" ColumnName="IdNomina" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="TipoNomina" ColumnName="TipoNomina" />
+          <ScalarProperty Name="Banco" ColumnName="Banco" />
+          <ScalarProperty Name="fechaDesde" ColumnName="fechaDesde" />
+          <ScalarProperty Name="fechaHasta" ColumnName="fechaHasta" />
+          <ScalarProperty Name="FechaEfectividad" ColumnName="FechaEfectividad" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="Total_AFP" ColumnName="Total_AFP" />
+          <ScalarProperty Name="Total_ARS" ColumnName="Total_ARS" />
+          <ScalarProperty Name="Total_ISR" ColumnName="Total_ISR" />
+          <ScalarProperty Name="Total_ingresos" ColumnName="Total_ingresos" />
+          <ScalarProperty Name="Total_Otros_descuentos" ColumnName="Total_Otros_descuentos" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Puestos">
+      <EntityTypeMapping TypeName="IsTypeOf(NominaDBModel.Puestos)">
+        <MappingFragment StoreEntitySet="Puestos">
+          <ScalarProperty Name="IdPuesto" ColumnName="IdPuesto" />
+          <ScalarProperty Name="Puesto" ColumnName="Puesto" />
+          <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+          <ScalarProperty Name="SalarioMinimo" ColumnName="SalarioMinimo" />
+          <ScalarProperty Name="SalarioMaximo" ColumnName="SalarioMaximo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipos_Deducciones">
+      <EntityTypeMapping TypeName="IsTypeOf(NominaDBModel.Tipos_Deducciones)">
+        <MappingFragment StoreEntitySet="Tipos_Deducciones">
+          <ScalarProperty Name="IdTipoDeduccion" ColumnName="IdTipoDeduccion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="DependeSalario" ColumnName="DependeSalario" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipos_Ingresos">
+      <EntityTypeMapping TypeName="IsTypeOf(NominaDBModel.Tipos_Ingresos)">
+        <MappingFragment StoreEntitySet="Tipos_Ingresos">
+          <ScalarProperty Name="IdTipoIngreso" ColumnName="IdTipoIngreso" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="DependeSalario" ColumnName="DependeSalario" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoTransaccion">
+      <EntityTypeMapping TypeName="IsTypeOf(NominaDBModel.TipoTransaccion)">
+        <MappingFragment StoreEntitySet="TipoTransaccion">
+          <ScalarProperty Name="IdTipoTransaccion" ColumnName="IdTipoTransaccion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->

@@ -19,10 +19,8 @@
         <AssociationConnector Association="NominaDBModel.Fk_Empl_Depart" />
         <AssociationConnector Association="NominaDBModel.fk_Puest_Depart" />
         <AssociationConnector Association="NominaDBModel.FK__Detalle_T__IdMae__5CD6CB2B" />
-        <AssociationConnector Association="NominaDBModel.Fk_Empl_Nomina" />
         <AssociationConnector Association="NominaDBModel.Fk_Empl_Puesto" />
         <AssociationConnector Association="NominaDBModel.Fk_Empl_Transa" />
-        <AssociationConnector Association="NominaDBModel.Fk_Nom_Empl" />
         <AssociationConnector Association="NominaDBModel.FK__Maestro_T__TipoT__71D1E811" />
         <AssociationConnector Association="NominaDBModel.Fk_TipDeduc_Transa" />
         <AssociationConnector Association="NominaDBModel.FK_TipIngr_Transa" />

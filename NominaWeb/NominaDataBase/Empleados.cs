@@ -31,16 +31,13 @@ namespace NominaDataBase
         public Nullable<decimal> Salario_H_Extra { get; set; }
         public Nullable<decimal> Salario_H_Ordinarias { get; set; }
         public System.DateTime FechaIngreso { get; set; }
-        public int IdNomina { get; set; }
         public string Estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AsientosContables> AsientosContables { get; set; }
         public virtual Departamentos Departamentos { get; set; }
-        public virtual Nominas Nominas { get; set; }
         public virtual Puestos Puestos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Maestro_Transacciones> Maestro_Transacciones { get; set; }
-        public virtual Nominas Nominas1 { get; set; }
     }
 }
