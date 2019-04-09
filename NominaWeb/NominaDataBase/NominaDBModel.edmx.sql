@@ -105,7 +105,7 @@ GO
 CREATE TABLE [dbo].[Detalle_Transacciones] (
     [IdTransaccion] int IDENTITY(1,1) NOT NULL,
     [TipoTransaccion] varchar(50)  NOT NULL,
-    [Fecha] datetime  NOT NULL,
+    [Fecha] date  NOT NULL,
     [Monto] decimal(15,2)  NOT NULL,
     [Estado] char(1)  NULL
 );
@@ -122,7 +122,7 @@ CREATE TABLE [dbo].[Empleados] (
     [Salario] decimal(15,2)  NOT NULL,
     [Salario_H_Extra] decimal(15,2)  NULL,
     [Salario_H_Ordinarias] decimal(15,2)  NULL,
-    [FechaIngreso] datetime  NOT NULL,
+    [FechaIngreso] date  NOT NULL,
     [IdNomina] int  NOT NULL,
     [Estado] char(1)  NULL
 );
