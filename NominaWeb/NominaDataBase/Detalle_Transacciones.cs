@@ -14,6 +14,7 @@ namespace NominaDataBase
     
     public partial class Detalle_Transacciones
     {
+        [System.ComponentModel.DataAnnotations.Key]
         public int IdTransaccion { get; set; }
         public System.DateTime Fecha { get; set; }
         public decimal Monto { get; set; }

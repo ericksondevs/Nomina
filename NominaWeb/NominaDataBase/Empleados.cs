@@ -20,7 +20,8 @@ namespace NominaDataBase
             this.AsientosContables = new HashSet<AsientosContables>();
             this.Maestro_Transacciones = new HashSet<Maestro_Transacciones>();
         }
-    
+
+        [System.ComponentModel.DataAnnotations.Key]
         public int IdEmpleado { get; set; }
         public string Cedula { get; set; }
         public string Nombre { get; set; }

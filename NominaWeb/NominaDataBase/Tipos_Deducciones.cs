@@ -19,7 +19,7 @@ namespace NominaDataBase
         {
             this.Maestro_Transacciones = new HashSet<Maestro_Transacciones>();
         }
-    
+        [System.ComponentModel.DataAnnotations.Key]
         public int IdTipoDeduccion { get; set; }
         public string Nombre { get; set; }
         public string DependeSalario { get; set; }

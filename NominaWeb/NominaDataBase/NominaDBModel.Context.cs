@@ -10,6 +10,7 @@
 namespace NominaDataBase
 {
     using System;
+    using System.Data.Common;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
@@ -19,11 +20,17 @@ namespace NominaDataBase
             : base("name=NominaDBEntities")
         {
         }
-    
+
+        public NominaDBEntities(DbConnection existingConnection, bool contextOwnsConnection) : base(existingConnection, contextOwnsConnection)
+        {
+
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            throw new UnintentionalCodeFirstException();
+            base.OnModelCreating(modelBuilder);
         }
+
     
         public virtual DbSet<AsientosContables> AsientosContables { get; set; }
         public virtual DbSet<Departamentos> Departamentos { get; set; }

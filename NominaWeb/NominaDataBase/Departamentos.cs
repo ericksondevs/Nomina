@@ -20,7 +20,8 @@ namespace NominaDataBase
             this.Empleados = new HashSet<Empleados>();
             this.Puestos = new HashSet<Puestos>();
         }
-    
+
+        [System.ComponentModel.DataAnnotations.Key]
         public int IdDepartamento { get; set; }
         public string Nombre { get; set; }
         public string Estado { get; set; }

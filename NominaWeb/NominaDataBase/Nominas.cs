@@ -14,6 +14,7 @@ namespace NominaDataBase
     
     public partial class Nominas
     {
+        [System.ComponentModel.DataAnnotations.Key]
         public int IdNomina { get; set; }
         public string Nombre { get; set; }
         public string TipoNomina { get; set; }

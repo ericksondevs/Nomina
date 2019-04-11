@@ -1,100 +1,105 @@
 ﻿@model IEnumerable<NominaDataBase.Empleados>
 
 @{
-    ViewBag.Title = "Creacion de Empleados";
+    ViewBag.Title = "NominaAPP - Empleados";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Empleados</h2>
+<h2 class="p-3 mb-2 bg-primary text-white col-lg-10">&nbsp;&nbsp;Empleados</h2>
+<br /><br /><br /><br />
 
 <p>
-    @Html.ActionLink("Crear Nuevo", "Create")
+    @Html.ActionLink("Crear Nuevo Empleado", "Create", new { }, new { @class = "btn btn-success" })
+    <br /><br />
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Cedula)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Apellido)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Salario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Salario_H_Extra)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Salario_H_Ordinarias)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaIngreso)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Estado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Departamentos.Nombre)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Nominas.Nombre)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.Puestos.Puesto)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Nominas1.Nombre)
-        </th>*@
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cedula)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Apellido)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Salario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Salario_H_Extra)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Salario_H_Ordinarias)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaIngreso)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Departamentos.Nombre)
-        </td>
-        @*<td>
+<div class="col-md-16">
+    <table class="table table-bordered table-striped text-center">
+        <tr style="font-size:18px">
+            <th>
+                @Html.DisplayNameFor(model => model.Cedula)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salario)
+            </th>
+            <th>
+                @Html.DisplayName("Salario Horas Extra")
+            </th>
+            <th>
+                @Html.DisplayName("Salario Horas Ordinarias")
+            </th>
+            <th>
+                @Html.DisplayName("Fecha Ingreso")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayName("Departamento")
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Nominas.Nombre)
+                </th>*@
+            <th>
+                @Html.DisplayName("Puesto")
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Nominas1.Nombre)
+                </th>*@
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cedula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salario_H_Extra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salario_H_Ordinarias)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaIngreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Departamentos.Nombre)
+            </td>
+            @*<td>
             @Html.DisplayFor(modelItem => item.Nominas.Nombre)
         </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.Puestos.Puesto)
-        </td>
-        @*<td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Puestos.Puesto)
+            </td>
+            @*<td>
             @Html.DisplayFor(modelItem => item.Nominas1.Nombre)
         </td>*@
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdEmpleado }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdEmpleado }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdEmpleado })
-        </td>
-    </tr>
-}
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.IdEmpleado }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.IdEmpleado }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.IdEmpleado }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+        }
 
-</table>
+    </table>

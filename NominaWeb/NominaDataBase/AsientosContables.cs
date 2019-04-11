@@ -14,6 +14,7 @@ namespace NominaDataBase
     
     public partial class AsientosContables
     {
+        [System.ComponentModel.DataAnnotations.Key]
         public int IdAsiento { get; set; }
         public string Descripcion { get; set; }
         public int IdEmpleado { get; set; }

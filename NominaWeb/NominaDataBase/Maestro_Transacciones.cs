@@ -19,7 +19,8 @@ namespace NominaDataBase
         {
             this.Detalle_Transacciones = new HashSet<Detalle_Transacciones>();
         }
-    
+
+        [System.ComponentModel.DataAnnotations.Key]
         public int IdTransaccion { get; set; }
         public int IdEmpleado { get; set; }
         public int IdTipoIngreso { get; set; }
