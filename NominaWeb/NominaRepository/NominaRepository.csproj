@@ -78,6 +78,7 @@
   <ItemGroup>
     <Compile Include="Interfaces\IBaseRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AsientoContableRepository.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\DepartamentoRepository.cs" />
     <Compile Include="Repositories\DetalleTransaccionesRepository.cs" />

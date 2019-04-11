@@ -51,7 +51,7 @@ namespace NominaRepository
 
         private DetalleTransaccionesRepository detalletransaccionesRepository;
 
-        public DetalleTransaccionesRepository detalleTransaccionesRepository
+        public DetalleTransaccionesRepository DetalleTransaccionesRepository
         {
             get
             {
@@ -60,6 +60,20 @@ namespace NominaRepository
                     this.detalletransaccionesRepository = new DetalleTransaccionesRepository(dbContext);
                 }
                 return detalletransaccionesRepository;
+            }
+        }
+
+        private AsientoContableRepository asientoContableRepository;
+
+        public AsientoContableRepository AsientoContableRepository
+        {
+            get
+            {
+                if (this.asientoContableRepository == null)
+                {
+                    this.asientoContableRepository = new AsientoContableRepository(dbContext);
+                }
+                return asientoContableRepository;
             }
         }
 
