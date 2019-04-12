@@ -5,177 +5,180 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="p-3 mb-2 bg-primary text-white col-md-10">Nóminas</h2>
+<h2 class="p-3 mb-2 bg-primary text-white col-md-12">Nóminas</h2>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-group-sm col-md-12">
-        <h3 class="p-3 mb-2 bg-info text-white col-md-1">Creación</h3>
-        <br /><br />
-        <br />
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="form-group-md col-md-10">
+    <h3 class="p-3 mb-2 bg-info text-white col-md-1">Creación</h3>
+    <br /><br />
+    <br />
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group col-md-7" style="font-size:20px">
-            @Html.LabelFor(model => model.Nombre, "Nombre:", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
-                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", @style = "font-size: 16px" } })
-                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group col-md-6" style="font-size:20px">
+        @Html.LabelFor(model => model.Nombre, "Nombre:", htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
+            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", @style = "font-size: 16px" } })
+            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group col-md-5" style="font-size:20px; text-align:right">
-            @Html.LabelFor(model => model.fechaDesde, "Fecha Desde:", htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-4">
-                @Html.EditorFor(model => model.fechaDesde, new { htmlAttributes = new { @class = "datepicker form-control", @style = "font-size: 16px", @displayname = "TxtFechaDesde" } })
-                @Html.ValidationMessageFor(model => model.fechaDesde, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group col-md-6" style="font-size:20px">
+        @Html.LabelFor(model => model.TipoNomina, "Tipo Nomina:", htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
+            @{
+                List<SelectListItem> listItemsTipoNomina = new List<SelectListItem>();
+                listItemsTipoNomina.Clear();
+                listItemsTipoNomina.Add(new SelectListItem { Text = "Salario", Value = "S" });
+                //listItemsTipoNomina.Add(new SelectListItem { Text = "Inactivo", Value = "I" });
+            }
+
+            @Html.DropDownListFor(model => model.TipoNomina, listItemsTipoNomina, new { @class = "col-md-8 form-control", @style = "font-size: 16px" })
+            @Html.ValidationMessageFor(model => model.TipoNomina, "", new { @class = "text-danger" })
         </div>
+        @*@Html.EditorFor(model => model.TipoNomina, new { htmlAttributes = new { @class = "form-control", @style = "font-size: 16px" } })
+            @Html.ValidationMessageFor(model => model.TipoNomina, "", new { @class = "text-danger" })*@
+    </div>
 
-        <div class="form-group col-md-7" style="font-size:20px">
-            @Html.LabelFor(model => model.Nombre, "Tipo Nomina:", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
-                @Html.EditorFor(model => model.TipoNomina, new { htmlAttributes = new { @class = "form-control", @style = "font-size: 16px" } })
-                @Html.ValidationMessageFor(model => model.TipoNomina, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group col-md-6" style="font-size:20px;">
+        @Html.LabelFor(model => model.fechaDesde, "Fecha Desde:", htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
+            @Html.EditorFor(model => model.fechaDesde, new { htmlAttributes = new { @class = "datepicker form-control", @style = "font-size: 16px", @displayname = "TxtFechaDesde" } })
+            @Html.ValidationMessageFor(model => model.fechaDesde, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group col-md-5" style="font-size:20px; text-align:right">
-            @Html.LabelFor(model => model.fechaHasta, "Fecha Hasta:", htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-4">
-                @Html.EditorFor(model => model.fechaHasta, new { htmlAttributes = new { @class = "datepicker form-control", @style = "font-size: 16px" } })
-                @Html.ValidationMessageFor(model => model.fechaHasta, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group col-md-6" style="font-size:20px;">
+        @Html.LabelFor(model => model.fechaHasta, "Fecha Hasta:", htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
+            @Html.EditorFor(model => model.fechaHasta, new { htmlAttributes = new { @class = " form-control datepicker", @style = "font-size: 16px" } })
+            @Html.ValidationMessageFor(model => model.fechaHasta, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group col-md-7" style="font-size:20px">
-            @Html.LabelFor(model => model.Banco, "Banco:", htmlAttributes: new { @class = "control-label col-md-2" })
-
-            <div class="col-md-4">
-                @{
-                    List<SelectListItem> listItems = new List<SelectListItem>();
-                    listItems.Add(new SelectListItem { Text = "Banco Popular", Value = "Banco Popular" });
-                    listItems.Add(new SelectListItem { Text = "Banreservas", Value = "Banreservas" });
-                    listItems.Add(new SelectListItem { Text = "Banco BHD León", Value = "Banco BHD León" });
-                    listItems.Add(new SelectListItem { Text = "Scotiabank", Value = "Scotiabank" });
-                    listItems.Add(new SelectListItem { Text = "Banco Progreso", Value = "Banco Progreso" });
-                    listItems.Add(new SelectListItem { Text = "Banco Vimenca", Value = "Banco Vimenca" });
-                    listItems.Add(new SelectListItem { Text = "Banco Central", Value = "Banco Central" });
-                    listItems.Add(new SelectListItem { Text = "Banco Caribe", Value = "Banco Caribe" });
-                    listItems.Add(new SelectListItem { Text = "Banco Santa Cruz", Value = "Banco Santa Cruz" });
-                    listItems.Add(new SelectListItem { Text = "Banco Promerica", Value = "Banco Promerica" });
-                    listItems.Add(new SelectListItem { Text = "Banco BDI", Value = "Banco BDI" });
-                    listItems.Add(new SelectListItem { Text = "Bancamérica", Value = "Bancamérica" });
-                    listItems.Add(new SelectListItem { Text = "Banesco", Value = "Banesco" });
-                    listItems.Add(new SelectListItem { Text = "Banco Agrícola", Value = "Banco Agrícola" });
-                    listItems.Add(new SelectListItem { Text = "Banco Ademi", Value = "Banco Ademi" });
-                }
-
-                @Html.DropDownListFor(model => model.Banco, listItems, new { @class = "col-md-3 form-control", @style = "font-size: 16px" })
-                @Html.ValidationMessageFor(model => model.Banco, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group col-md-6" style="font-size:20px;">
+        @Html.LabelFor(model => model.FechaEfectividad, "Fecha de Efectividad:", htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
+            @Html.EditorFor(model => model.FechaEfectividad, new { htmlAttributes = new { @class = "datepicker form-control", @style = "font-size: 16px" } })
+            @Html.ValidationMessageFor(model => model.FechaEfectividad, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group col-md-5" style="font-size:20px; text-align:right">
-            @Html.LabelFor(model => model.FechaEfectividad, "Fecha de Efectividad:", htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-4">
-                @Html.EditorFor(model => model.FechaEfectividad, new { htmlAttributes = new { @class = "datepicker form-control", @style = "font-size: 16px" } })
-                @Html.ValidationMessageFor(model => model.FechaEfectividad, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group col-md-6" style="font-size:20px">
+        @Html.LabelFor(model => model.Banco, "Banco:", htmlAttributes: new { @class = "control-label col-md-4" })
+
+        <div class="col-md-8">
+            @{
+                List<SelectListItem> listItems = new List<SelectListItem>();
+                listItems.Add(new SelectListItem { Text = "Banco Popular", Value = "Banco Popular" });
+                listItems.Add(new SelectListItem { Text = "Banreservas", Value = "Banreservas" });
+                listItems.Add(new SelectListItem { Text = "Banco BHD León", Value = "Banco BHD León" });
+                listItems.Add(new SelectListItem { Text = "Scotiabank", Value = "Scotiabank" });
+                listItems.Add(new SelectListItem { Text = "Banco Progreso", Value = "Banco Progreso" });
+                listItems.Add(new SelectListItem { Text = "Banco Vimenca", Value = "Banco Vimenca" });
+                listItems.Add(new SelectListItem { Text = "Banco Central", Value = "Banco Central" });
+                listItems.Add(new SelectListItem { Text = "Banco Caribe", Value = "Banco Caribe" });
+                listItems.Add(new SelectListItem { Text = "Banco Santa Cruz", Value = "Banco Santa Cruz" });
+                listItems.Add(new SelectListItem { Text = "Banco Promerica", Value = "Banco Promerica" });
+                listItems.Add(new SelectListItem { Text = "Banco BDI", Value = "Banco BDI" });
+                listItems.Add(new SelectListItem { Text = "Bancamérica", Value = "Bancamérica" });
+                listItems.Add(new SelectListItem { Text = "Banesco", Value = "Banesco" });
+                listItems.Add(new SelectListItem { Text = "Banco Agrícola", Value = "Banco Agrícola" });
+                listItems.Add(new SelectListItem { Text = "Banco Ademi", Value = "Banco Ademi" });
+            }
+
+            @Html.DropDownListFor(model => model.Banco, listItems, new { @class = "col-md-3 form-control", @style = "font-size: 16px" })
+            @Html.ValidationMessageFor(model => model.Banco, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group col-md-7" style="font-size:20px">
-            @Html.LabelFor(model => model.Monto, "Monto:", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
-                @Html.TextBoxFor(model => model.Monto, new { @type = "number", @class = "form-control", @min = "0", @style = "font-size: 16px" })
-                @Html.ValidationMessageFor(model => model.Monto, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group col-md-6" style="font-size:20px">
+        @Html.LabelFor(model => model.Monto, "Monto:", htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
+            @Html.TextBoxFor(model => model.Monto, new { @type = "number", @class = "form-control", @min = "0", @style = "font-size: 16px" })
+            @Html.ValidationMessageFor(model => model.Monto, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group col-md-5" style="font-size:20px">
-            @Html.LabelFor(model => model.Total_AFP, "Total AFP:", htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-4">
-                @Html.TextBoxFor(model => model.Total_AFP, new { @type = "number", @class = "form-control", @min = "0", @style = "font-size: 16px" })
-                @Html.ValidationMessageFor(model => model.Total_AFP, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group col-md-6" style="font-size:20px">
+        @Html.LabelFor(model => model.Total_AFP, "Total AFP:", htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
+            @Html.TextBoxFor(model => model.Total_AFP, new { @type = "number", @class = "form-control", @min = "0", @style = "font-size: 16px" })
+            @Html.ValidationMessageFor(model => model.Total_AFP, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group col-md-7"></div>
-
-        <div class="form-group col-md-7" style="font-size:20px">
-            @Html.LabelFor(model => model.Observaciones, "Observaciones:", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-6">
-                @Html.TextAreaFor(model => model.Observaciones, new { cols = 60, rows = 5, @class = "form-control", @style = "font-size: 16px" })
-                @Html.ValidationMessageFor(model => model.Observaciones, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group col-md-6" style="font-size:20px">
+        @Html.LabelFor(model => model.Total_ARS, "Total ARS:", htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
+            @Html.TextBoxFor(model => model.Total_ARS, new { @type = "number", @class = "form-control", @min = "0", @style = "font-size: 16px" })
+            @Html.ValidationMessageFor(model => model.Total_ARS, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group col-md-5" style="font-size:20px">
-            @Html.LabelFor(model => model.Total_ARS, "Total ARS:", htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-4">
-                @Html.TextBoxFor(model => model.Total_ARS, new { @type = "number", @class = "form-control", @min = "0", @style = "font-size: 16px" })
-                @Html.ValidationMessageFor(model => model.Total_ARS, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group col-md-6" style="font-size:20px">
+        @Html.LabelFor(model => model.Total_ISR, "Total ISR:", htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
+            @Html.TextBoxFor(model => model.Total_ISR, new { @type = "number", @class = "form-control", @min = "0", @style = "font-size: 16px" })
+            @Html.ValidationMessageFor(model => model.Total_ISR, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group col-md-5"></div>
-
-        <div class="form-group col-md-5" style="font-size:20px">
-            @Html.LabelFor(model => model.Total_ISR, "Total ISR:", htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-4">
-                @Html.TextBoxFor(model => model.Total_ISR, new { @type = "number", @class = "form-control", @min = "0", @style = "font-size: 16px" })
-                @Html.ValidationMessageFor(model => model.Total_ISR, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group col-md-6" style="font-size:20px">
+        @Html.LabelFor(model => model.Total_ingresos, "Total de Ingresos:", htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
+            @Html.TextBoxFor(model => model.Total_ingresos, new { @type = "number", @class = "form-control", @min = "0", @style = "font-size: 16px" })
+            @Html.ValidationMessageFor(model => model.Total_ingresos, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group col-md-5"></div>
+    <div class="form-group col-md-6" style="font-size:20px">
+        @Html.LabelFor(model => model.Estado, "Estado:", htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
+            @{
+                listItems.Clear();
+                listItems.Add(new SelectListItem { Text = "Activo", Value = "A" });
+                listItems.Add(new SelectListItem { Text = "Inactivo", Value = "I" });
+            }
 
-        <div class="form-group col-md-5" style="font-size:20px">
-            @Html.LabelFor(model => model.Total_ingresos, "Total de Ingresos:", htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-4">
-                @Html.TextBoxFor(model => model.Total_ingresos, new { @type = "number", @class = "form-control", @min = "0", @style = "font-size: 16px" })
-                @Html.ValidationMessageFor(model => model.Total_ingresos, "", new { @class = "text-danger" })
-            </div>
+            @Html.DropDownListFor(model => model.Estado, listItems, new { @class = "col-md-2 form-control", @style = "font-size: 16px" })
+            @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group col-md-7" style="font-size:20px">
-            @Html.LabelFor(model => model.Estado, "Estado:", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-2">
-                @{
-                    listItems.Clear();
-                    listItems.Add(new SelectListItem { Text = "Activo", Value = "A" });
-                    listItems.Add(new SelectListItem { Text = "Inactivo", Value = "I" });
-                }
-
-                @Html.DropDownListFor(model => model.Estado, listItems, new { @class = "col-md-2 form-control", @style = "font-size: 16px" })
-                @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group col-md-6" style="font-size:20px">
+        @Html.LabelFor(model => model.Total_Otros_descuentos, "Total Otros Descuentos:", htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
+            @Html.TextBoxFor(model => model.Total_Otros_descuentos, new { @type = "number", @class = "form-control", @min = "0", @style = "font-size: 16px" })
+            @Html.ValidationMessageFor(model => model.Total_Otros_descuentos, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group col-md-5" style="font-size:20px">
-            @Html.LabelFor(model => model.Total_Otros_descuentos, "Total Otros Descuentos:", htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-4">
-                @Html.TextBoxFor(model => model.Total_Otros_descuentos, new { @type = "number", @class = "form-control", @min = "0", @style = "font-size: 16px" })
-                @Html.ValidationMessageFor(model => model.Total_Otros_descuentos, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group col-md-6" style="font-size:20px">
+        @Html.LabelFor(model => model.Observaciones, "Observaciones:", htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
+            @Html.TextAreaFor(model => model.Observaciones, new { cols = 60, rows = 2, @class = "form-control", @style = "font-size: 16px" })
+            @Html.ValidationMessageFor(model => model.Observaciones, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-5 col-md-12">
-                <br />
+    <div class="form-group mb-3">
+        <div class="col-md-12">
+            <br />
+            <div class="col-md-6 text-left">
+                @Html.ActionLink("Volver Atras", "Index", new { }, new { @class = "btn btn-warning text-left" })
+            </div>
+            <div class="col-md-6 text-right">
                 <input type="submit" value="Guardar Nómina" class="btn btn-success" @*onsubmit="@Html.Raw(TempData["Mensaje"])"*@ />
             </div>
         </div>
     </div>
-}
-
-<div class="form-horizontal col-md-10">
-    <br />
-    @Html.ActionLink("Volver Atras", "Index", new { }, new { @class = "btn btn-warning" })
 </div>
+}
 
 <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
