@@ -1,67 +1,75 @@
 ﻿@model IEnumerable<NominaDataBase.Maestro_Transacciones>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "NominaAPP - Transacciones";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2 class="p-3 mb-2 bg-primary text-white col-lg-12">&nbsp;&nbsp;Transacciones</h2>
+<br /><br /><br /><br />
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Nueva Transacción", "Create", new { }, new { @class = "btn btn-success" })
+    <br /><br />
 </p>
+
 
 <div class="input-group">
     <span class="input-group-btn">
-        <input type="submit" value="Buscar" class="btn btn-default" />
+        <input type="submit" value="Buscar" class="btn btn-info" />
     </span>
- @Html.TextBox("SearchName", null, new { @class = "form-control " })
+    @Html.TextBox("SearchName", null, new { @class = "form-control " })
 </div>
+<br />
 
+<div class="col-md-16">
+    <table class="table table-bordered table-striped text-center">
+        <tr style="font-size:18px">
+            <th>
+                @Html.DisplayName("ID Transacción")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayName("Cedula de Empleado")
+            </th>
+            <th>
+                @Html.DisplayName("tipo de Deducción")
+            </th>
+            <th>
+                @Html.DisplayName("Tipo de Ingreso")
+            </th>
+            <th>
+                @Html.DisplayName("Acción")
+            </th>
+            <th></th>
+        </tr>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IdTransaccion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Estado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Empleados.Cedula)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tipos_Deducciones.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tipos_Ingresos.Nombre)
-        </th>
-        <th></th>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr style="font-size:18px">
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdTransaccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Empleados.Cedula)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipos_Deducciones.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipos_Ingresos.Nombre)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IdEmpleado }, new { @class = "btn btn-warning" }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.IdEmpleado }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.IdEmpleado }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdTransaccion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Empleados.Cedula)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tipos_Deducciones.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tipos_Ingresos.Nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.IdTransaccion }) |
-            @Html.ActionLink("Details", "Details", new { id = item.IdTransaccion }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.IdTransaccion })
-        </td>
-    </tr>
-}
-
-</table>
+    </table>
