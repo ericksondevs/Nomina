@@ -1,81 +1,99 @@
 ﻿@model NominaDataBase.AsientosContables
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "NominaAPP - Eliminar Asiento Contable";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
+<h2 class="p-3 mb-2 bg-primary text-white col-md-8">Eliminar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>AsientosContables</h4>
-    <hr />
-    <dl class="dl-horizontal">
+<div class="form-horizontal col-md-8" style="text-align:center">
+
+    <h3 class="col-md-8">Esta seguro de eliminar este registro?</h3>
+
+    <h3 class=" mb-2 bg-info text-white col-md-8" style="text-align:center">Asiento contable No.@Html.DisplayFor(model => model.IdAsiento)</h3>
+    <dl class="dl-horizontal col-md-8">
         <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
+            <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Descripcion):</h3>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Descripcion)
+            <h3>@Html.DisplayFor(model => model.Descripcion)</h3>
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Cuenta)
+            <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Cuenta):</h3>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Cuenta)
+            <h3>@Html.DisplayFor(model => model.Cuenta)</h3>
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TipoMovimiento)
+            <h3 style="font-weight:bold">@Html.DisplayName("Tipo Mov:")</h3>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TipoMovimiento)
+            <h3>@Html.DisplayFor(model => model.TipoMovimiento)</h3>
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FechaAsiento)
+            <h3 style="font-weight:bold">@Html.DisplayName("Fecha Asiento:")</h3>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FechaAsiento)
+            <h3>@Html.DisplayFor(model => model.FechaAsiento)</h3>
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.MontoAsiento)
+            <h3 style="font-weight:bold">@Html.DisplayName("Monto Asiento:")</h3>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MontoAsiento)
+            <h3>@Html.DisplayFor(model => model.MontoAsiento)</h3>
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Estado)
+            <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Estado):</h3>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Estado)
+            <h3>@Html.DisplayFor(model => model.Estado)</h3>
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Empleados.Cedula)
+            <h3 style="font-weight:bold">@Html.DisplayName("Cedula Empl:")</h3>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Empleados.Cedula)
+            <h3>@Html.DisplayFor(model => model.Empleados.Cedula)</h3>
         </dd>
 
     </dl>
-
-    @using (Html.BeginForm()) {
+</div>
+<div class="form-group col-md-8" style="text-align:center">
+    <br />
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+        <div class="form-group">
+            <div class="control-label col-md-8">
+                <br />
+                <input type="submit" value="Eliminar Asiento" class="btn btn-danger" style="font-size:18px" />
+            </div>
+        </div>
+        <div class="form-group" style="text-align:center">
+            <div class="control-label col-md-8">
+                <br />
+                @Html.ActionLink("Volver Atras", "Index", new { }, new { @class = "btn btn-warning fa fa-long-arrow-alt-left" })
+            </div>
         </div>
     }
 </div>
+
+</div>
+
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+

@@ -1,89 +1,133 @@
 ﻿@model NominaDataBase.AsientosContables
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "NominaAPP - Creación de  Asientos Contables";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<h2>Create</h2>
+<h2 class="p-3 mb-2 bg-primary text-white col-md-12">Asientos Contables</h2><hr /><hr /><hr />
+<h3 class="p-3 mb-2 bg-info text-white">Creación</h3>
 
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>AsientosContables</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <div class="container py-5">
+        <form class="row justify-content-center">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.IdEmpleado, "IdEmpleado", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("IdEmpleado", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.IdEmpleado, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <div class="form-group container col-md-12">
+                <br /><br />
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Cuenta, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Cuenta, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Cuenta, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="col-md-3" style="font-size:20px">
+                    @Html.LabelFor(model => model.Descripcion, "Descripción:", htmlAttributes: new { @class = "control-label col-md-9" })
+                    <div class="col-md-10 form-group">
+                        @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control", @style = "font-size: 16px", @placeholder = "Descripción de Asiento" } })
+                        @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TipoMovimiento, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TipoMovimiento, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TipoMovimiento, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="col-md-3" style="font-size:20px">
+                    @Html.LabelFor(model => model.IdEmpleado, "Cedula de Empleado:", htmlAttributes: new { @class = "control-label col-md-12" })
+                    <div class="col-md-10 form-group">
+                        @Html.DropDownList("IdEmpleado", null, htmlAttributes: new { @class = "form-control", @style = "font-size: 16px", @placeholder = "Cedula de Empleado" })
+                        @Html.ValidationMessageFor(model => model.IdEmpleado, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.FechaAsiento, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FechaAsiento, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FechaAsiento, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="col-md-3" style="font-size:20px">
+                    @Html.LabelFor(model => model.Cuenta, "Cuenta:", htmlAttributes: new { @class = "control-label col-md-9" })
+                    <div class="col-md-10 form-group">
+                        @Html.EditorFor(model => model.Cuenta, new { htmlAttributes = new { @type = "number", @class = "form-control", @style = "font-size: 16px", @placeholder = "Cuenta Contable" } })
+                        @Html.ValidationMessageFor(model => model.Cuenta, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MontoAsiento, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MontoAsiento, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MontoAsiento, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="col-md-3" style="font-size:20px">
+                    @Html.LabelFor(model => model.TipoMovimiento, "Tipo de Movimiento:", htmlAttributes: new { @class = "control-label col-md-12" })
+                    <div class="col-md-12 form-group">
+                        @{
+                            List<SelectListItem> listItems = new List<SelectListItem>();
+                            listItems.Add(new SelectListItem { Text = "Asiento de Apertura", Value = "AP" });
+                            listItems.Add(new SelectListItem { Text = "Asiento Operativo del ejercicio", Value = "AO" });
+                            listItems.Add(new SelectListItem { Text = "Asiento de ajuste", Value = "AA" });
+                            listItems.Add(new SelectListItem { Text = "Asiento de regularización", Value = "AR" });
+                            listItems.Add(new SelectListItem { Text = "Asiento de cierre", Value = "AC" });
+                            listItems.Add(new SelectListItem { Text = "Asiento simple", Value = "AS" });
+                            listItems.Add(new SelectListItem { Text = "Asiento compuesto", Value = "CO" });
+                        }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        @Html.DropDownListFor(model => model.TipoMovimiento, listItems, new { @class = "form-control", @style = "font-size: 16px", tabindex = 10 })
+                        @Html.ValidationMessageFor(model => model.TipoMovimiento, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <div class="col-md-3" style="font-size:20px">
+                    @Html.LabelFor(model => model.FechaAsiento, "Fecha del Asiento:", htmlAttributes: new { @class = "control-label col-md-12" })
+                    <div class="col-md-10 form-group" style="text-align:right">
+                        @Html.EditorFor(model => model.FechaAsiento, new { htmlAttributes = new { @class = "datepicker form-control", @style = "font-size: 16px", @placeholder = "Fecha de Asiento" } })
+                        @Html.ValidationMessageFor(model => model.FechaAsiento, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-md-3" style="font-size:20px">
+                    @Html.LabelFor(model => model.MontoAsiento, "Monto del Asiento:", htmlAttributes: new { @class = "control-label col-md-12" })
+                    <div class="col-md-10 form-group">
+                        @Html.EditorFor(model => model.MontoAsiento, new { htmlAttributes = new { @type = "number", @class = "form-control", @style = "font-size: 16px", @placeholder = "Monto de Asiento" } })
+                        @Html.ValidationMessageFor(model => model.MontoAsiento, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-md-3" style="font-size:20px">
+                    @Html.LabelFor(model => model.Estado, "Estado:", htmlAttributes: new { @class = "control-label col-md-9" })
+                    <div class="col-md-10 form-group">
+                        @{
+                            listItems.Clear();
+                            listItems.Add(new SelectListItem { Text = "Activo", Value = "A" });
+                            listItems.Add(new SelectListItem { Text = "Inactivo", Value = "I" });
+                        }
+
+                        @Html.DropDownListFor(model => model.Estado, listItems, new { @class = "form-control", @style = "font-size: 16px", tabindex = 10, @placeholder = "Estado" })
+                        @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group" style="text-align:center">
+                    <div class="control-label col-md-12">
+                        <br />
+                        <input type="submit" value="Guardar Asiento Contable" class="btn btn-success" style="font-size:18px" />
+                    </div>
+                </div>
+                <div class="form-group" style="text-align:center">
+                    <div class="control-label col-md-12">
+                        <br />
+                        @Html.ActionLink("Volver Atras", "Index", new { }, new { @class = "btn btn-warning fa fa-long-arrow-alt-left" })
+                    </div>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+@section scripts {
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({
+                dateFormat: "dd/mm/yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-6:+5",
+                showOn: "both",
+                buttonText: "<span class='fa fa-calendar-alt'></span>"
+            });
+
+        });
+    </script>
 }

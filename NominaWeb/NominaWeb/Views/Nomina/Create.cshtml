@@ -97,14 +97,6 @@
                 </div>
 
                 <div class="col-md-3" style="font-size:20px">
-                    @Html.LabelFor(model => model.Total_ingresos, "Total de Ingresos:", htmlAttributes: new { @class = "control-label col-md-9" })
-                    <div class="col-md-10 form-group">
-                        @Html.TextBoxFor(model => model.Total_ingresos, new { @type = "number", @class = "form-control", @min = "0", @style = "font-size: 16px", @placeholder = "Total de Ingresos" })
-                        @Html.ValidationMessageFor(model => model.Total_ingresos, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="col-md-3" style="font-size:20px">
                     @Html.LabelFor(model => model.Total_Otros_descuentos, "Total Otros Descuentos:", htmlAttributes: new { @class = "control-label col-md-12" })
                     <div class="col-md-10 form-group">
                         @Html.TextBoxFor(model => model.Total_Otros_descuentos, new { @type = "number", @class = "form-control", @min = "0", @style = "font-size: 16px", @placeholder = "Total Otros Descuentos" })
@@ -113,16 +105,10 @@
                 </div>
 
                 <div class="col-md-3" style="font-size:20px">
-                    @Html.LabelFor(model => model.Estado, "Estado:", htmlAttributes: new { @class = "control-label col-md-12" })
+                    @Html.LabelFor(model => model.Total_ingresos, "Total de Ingresos:", htmlAttributes: new { @class = "control-label col-md-9" })
                     <div class="col-md-10 form-group">
-                        @{
-                            listItems.Clear();
-                            listItems.Add(new SelectListItem { Text = "Activo", Value = "A" });
-                            listItems.Add(new SelectListItem { Text = "Inactivo", Value = "I" });
-                        }
-
-                        @Html.DropDownListFor(model => model.Estado, listItems, new { @class = "col-md-2 form-control", @style = "font-size: 16px" })
-                        @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(model => model.Total_ingresos, new { @type = "number", @class = "form-control", @min = "0", @style = "font-size: 16px", @placeholder = "Total de Ingresos" })
+                        @Html.ValidationMessageFor(model => model.Total_ingresos, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -150,6 +136,20 @@
                     </div>
                 </div>
 
+                <div class="col-md-3" style="font-size:20px">
+                    @Html.LabelFor(model => model.Estado, "Estado:", htmlAttributes: new { @class = "control-label col-md-12" })
+                    <div class="col-md-10 form-group">
+                        @{
+                            listItems.Clear();
+                            listItems.Add(new SelectListItem { Text = "Activo", Value = "A" });
+                            listItems.Add(new SelectListItem { Text = "Inactivo", Value = "I" });
+                        }
+
+                        @Html.DropDownListFor(model => model.Estado, listItems, new { @class = "col-md-2 form-control", @style = "font-size: 16px" })
+                        @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
                 <div class="col-md-5" style="font-size:20px">
                     @Html.LabelFor(model => model.Observaciones, "Observaciones:", htmlAttributes: new { @class = "control-label col-md-9" })
                     <div class="col-md-12 form-group">
@@ -163,7 +163,7 @@
                         <br />
                         <input type="submit" value="Guardar Nómina" class="btn btn-success" style="font-size:18px" />
                     </div>
-                </div> 
+                </div>
                 <div class="form-group" style="text-align:center">
                     <div class="control-label col-md-12">
                         <br />
