@@ -22,24 +22,12 @@ namespace NominaDataBase
 
                 connection.Open();
                 MySqlTransaction transaction = connection.BeginTransaction();
-
                 try
                 {
                     using (NominaDBEntities context = new NominaDBEntities(connection, false))
                     {
-
                         context.Database.Log = (string message) => { Console.WriteLine(message); };
-
                         context.Database.UseTransaction(transaction);
-
-                        List<Departamentos> Depa = new List<Departamentos>();
-
-                        Depa.Add(new Departamentos { IdDepartamento = 1, Nombre = "Informatica", Estado = "Saturado" });
-                        Depa.Add(new Departamentos { IdDepartamento = 2, Nombre = "Finanzas", Estado = "Fuera de Servicio" });
-                        Depa.Add(new Departamentos { IdDepartamento = 3, Nombre = "RHH", Estado = "Cerrado" });
-                        Depa.Add(new Departamentos { IdDepartamento = 4, Nombre = "Informatica", Estado = "Pasante" });
-
-                        context.Departamentos.AddRange(Depa);
 
                         context.SaveChanges();
                     }
