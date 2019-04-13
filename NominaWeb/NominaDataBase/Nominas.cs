@@ -11,7 +11,8 @@ namespace NominaDataBase
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Nominas
     {
         [System.ComponentModel.DataAnnotations.Key]
@@ -30,5 +31,15 @@ namespace NominaDataBase
         public Nullable<decimal> Total_Otros_descuentos { get; set; }
         public string Observaciones { get; set; }
         public string Estado { get; set; }
+
+      
+        [NotMapped]
+        public string fechaDesdeConverted { get; set; }
+        [NotMapped]
+        public string fechahastaConverted { get; set; }
+        [NotMapped]
+        public string FechaEfectividadConverted { get; set; }
+
+
     }
 }

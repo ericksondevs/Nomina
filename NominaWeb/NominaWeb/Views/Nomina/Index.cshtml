@@ -13,9 +13,9 @@
     <br /><br />
 </p>
 
-<div class="col-md-16">
+<div class="col-md-12">
     <table class="table table-bordered table-striped text-center">
-        <tr style="font-size:18px">
+        <tr style="font-size:15px">
             <th>
                 @Html.DisplayNameFor(model => model.Nombre)
             </th>
@@ -66,7 +66,7 @@
 
         @foreach (var item in Model)
         {
-        <tr style="font-size:18px">
+        <tr style="font-size:15px">
             <td>
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
@@ -77,13 +77,13 @@
                 @Html.DisplayFor(modelItem => item.Banco)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.fechaDesde)
+                @Html.DisplayFor(modelItem => item.fechaDesdeConverted)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.fechaHasta)
+                @Html.DisplayFor(modelItem => item.fechahastaConverted)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FechaEfectividad)
+                @Html.DisplayFor(modelItem => item.FechaEfectividadConverted)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Monto)
@@ -118,3 +118,4 @@
         }
 
     </table>
+    </div>

@@ -97,6 +97,7 @@
       <DependentUpon>NominaDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="BaseEntity.cs" />
+    <Compile Include="DataTimeSring.cs" />
     <Compile Include="Departamentos.cs">
       <DependentUpon>NominaDBModel.tt</DependentUpon>
     </Compile>
