@@ -1,62 +1,65 @@
 ﻿@model NominaDataBase.Departamentos
 
 @{
-    ViewBag.Title = "NominaAPP - Edicion Departamento";
+    ViewBag.Title = "NominaAPP - Edición de  Departamentos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<h2 class="p-3 mb-2 bg-primary text-white col-md-8">Edición</h2>
-
+<h2 class="p-3 mb-2 bg-primary text-white col-md-12">Departamentos</h2><hr /><hr /><hr />
+<h3 class="p-3 mb-2 bg-info text-white">Edición</h3>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    <div class="container py-5">
+        <form class="row justify-content-center">
 
-    <div class="form-horizontal col-md-8" style="text-align:center">
-        <h3 class="p-3 mb-2 bg-info text-white col-md-2">Departamentos</h3>
-        <br /><br />
-        <br />
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.IdDepartamento)
+            <div class="form-group container col-md-12">
+                <br /><br />
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.IdDepartamento)
 
-        <div class="form-group col-md-7">
-            @Html.LabelFor(model => model.Nombre, "Nombre: ", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                <div class="col-md-3" style="font-size:20px">
+                    @Html.LabelFor(model => model.Nombre, "Nombre: ", htmlAttributes: new { @class = "control-label col-md-9" })
+                    <div class="col-md-10 form-group">
+                        @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", @style = "font-size: 16px" } })
+                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-md-3" style="font-size:20px">
+                    @Html.LabelFor(model => model.Estado, "Estado: ", htmlAttributes: new { @class = "control-label col-md-9" })
+                    <div class="col-md-10 form-group">
+                        @{
+                            var listItems = new List<SelectListItem>();
+                            listItems.Add(new SelectListItem { Text = "Activo", Value = "A" });
+                            listItems.Add(new SelectListItem { Text = "Inactivo", Value = "I" });
+                        }
+
+                        @Html.DropDownListFor(model => model.Estado, listItems, new { @class = "col-md-2 form-control", @style = "font-size: 16px" })
+                        @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" style="text-align:center">
+                    <div class="control-label col-md-7">
+                        <br />
+                        <input type="submit" value="Guardar Departamento" class="btn btn-success" style="font-size:18px" />
+                    </div>
+                </div>
+                <div class="form-group" style="text-align:center">
+                    <div class="control-label col-md-7">
+                        <br />
+                        @Html.ActionLink("Volver Atras", "Index", new { }, new { @class = "btn btn-warning fa fa-long-arrow-alt-left" })
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Estado, "Estado: ", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-2">
-                @{
-                    var listItems = new List<SelectListItem>();
-                    listItems.Add(new SelectListItem { Text = "Activo", Value = "A" });
-                    listItems.Add(new SelectListItem { Text = "Inactivo", Value = "I" });
-                }
-
-                @Html.DropDownListFor(model => model.Estado, listItems, new { @class = "col-md-2 form-control" })
-                @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
-
-
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <br />
-                <input type="submit" value="Editar Departamento" class="btn btn-success" />
-            </div>
-        </div>
+        </form>
     </div>
 }
 
-<div class="form-horizontal col-md-10">
-    <br />
-    @Html.ActionLink("Volver Atras", "Index", new { }, new { @class = "btn btn-warning" })
-</div>
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
