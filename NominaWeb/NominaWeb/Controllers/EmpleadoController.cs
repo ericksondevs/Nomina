@@ -14,7 +14,7 @@ namespace NominaWeb.Controllers
     {
         private NominaDBEntities db = new NominaDBEntities();
 
-        private MySQLConection DB = new MySQLConection();
+        //private MySQLConection DB = new MySQLConection();
         
 
         // GET: Empleado
