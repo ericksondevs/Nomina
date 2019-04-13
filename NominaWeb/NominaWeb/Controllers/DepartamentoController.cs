@@ -10,7 +10,7 @@ using NominaDataBase;
 using NominaRepository;
 namespace NominaWeb.Controllers
 {
-    public class DepartamentoController : Controller
+    public class DepartamentoController : BaseController
     {
         //Evitar usar esta llamada, y hacerlo con UnitOfWork
         private NominaDBEntities db = new NominaDBEntities();

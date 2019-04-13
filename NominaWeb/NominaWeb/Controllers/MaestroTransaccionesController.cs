@@ -11,7 +11,7 @@ using NominaRepository;
 
 namespace NominaWeb.Controllers
 {
-    public class MaestroTransaccionesController : Controller
+    public class MaestroTransaccionesController : BaseController
     {
         private NominaDBEntities db = new NominaDBEntities();
         UnitOfWork u = new UnitOfWork();

@@ -10,7 +10,7 @@ using NominaDataBase;
 
 namespace NominaWeb.Controllers
 {
-    public class TiposIngresosController : Controller
+    public class TiposIngresosController : BaseController
     {
         private NominaDBEntities db = new NominaDBEntities();
 

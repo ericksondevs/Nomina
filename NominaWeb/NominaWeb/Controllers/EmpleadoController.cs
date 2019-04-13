@@ -10,7 +10,7 @@ using NominaDataBase;
 
 namespace NominaWeb.Controllers
 {
-    public class EmpleadoController : Controller
+    public class EmpleadoController : BaseController
     {
         private NominaDBEntities db = new NominaDBEntities();
 

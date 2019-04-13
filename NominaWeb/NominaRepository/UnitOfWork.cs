@@ -8,6 +8,8 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Web;
 using NominaRepository.Repositories;
+using MySql.Data.MySqlClient;
+
 namespace NominaRepository
 {
     public class UnitOfWork
@@ -18,7 +20,14 @@ namespace NominaRepository
 
         public UnitOfWork()
         {
-            dbContext = new NominaDBEntities();
+            using (MySqlConnection connection = new MySqlConnection(MySQLConection.conection))
+            {
+                // Create database if not exists
+                dbContext = new NominaDBEntities(connection, false);
+                dbContext.Database.CreateIfNotExists();
+
+            }
+            //dbContext = new NominaDBEntities();
         }
 
         private DepartamentoRepository departamentoRepository;

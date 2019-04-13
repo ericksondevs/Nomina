@@ -6,8 +6,8 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using NominaWeb.Models;
-using System.Data.Entity;
 using MySql.Data.EntityFramework;
+using System.Data.Entity;
 
 namespace NominaWeb
 {
