@@ -17,7 +17,31 @@ namespace NominaWeb.Controllers
         // GET: Nomina
         public ActionResult Index()
         {
-            return View(db.Nominas.ToList());
+            var hello = new List<Nominas>();
+
+            foreach (var x in db.Nominas.ToList())
+            {
+                hello.Add(new Nominas()
+                {
+                    IdNomina = x.IdNomina,
+                    Nombre = x.Nombre,
+                    TipoNomina = x.Banco,
+                    Banco = x.Banco,
+                    fechaDesdeConverted = x.fechaDesde.ToString("dd/MM/yy"),
+                    fechahastaConverted = x.fechaHasta.ToString("dd/MM/yy"),
+                    FechaEfectividadConverted = x.FechaEfectividad.ToString("dd/MM/yy"),
+                    Monto = x.Monto,
+                    Total_AFP = x.Total_AFP,
+                    Total_ARS = x.Total_ARS,
+                    Total_ISR = x.Total_ISR,
+                    Total_ingresos = x.Total_ingresos,
+                    Total_Otros_descuentos = x.Total_Otros_descuentos,
+                    Observaciones = x.Observaciones,
+                    Estado = x.Estado
+                });
+            }
+
+            return View(hello);
         }
 
         // GET: Nomina/Details/5

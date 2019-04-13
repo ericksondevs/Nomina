@@ -1,43 +1,51 @@
 ﻿@model NominaDataBase.TipoTransaccion
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "NominaAPP - Edición de  Tipos de Transacciones";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<h2>Edit</h2>
-
+<h2 class="p-3 mb-2 bg-primary text-white col-md-12">Tipo de Transacciones</h2><hr /><hr /><hr />
+<h3 class="p-3 mb-2 bg-info text-white">Edición</h3>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>TipoTransaccion</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.IdTipoTransaccion)
+    <div class="container py-5">
+        <form class="row justify-content-center">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <div class="form-group container col-md-12">
+                <br /><br />
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.IdTipoTransaccion)
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <div class="col-md-3" style="font-size:20px">
+                    @Html.LabelFor(model => model.Descripcion, "Descripción:", htmlAttributes: new { @class = "control-label col-md-9" })
+                    <div class="col-md-10 form-group">
+                        @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control", @style = "font-size: 16px", @placeholder = "Descripción" } })
+                        @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" style="text-align:center">
+                    <div class="control-label col-md-10">
+                        <br />
+                        <input type="submit" value="Guardar Tipo de Transacción" class="btn btn-success" style="font-size:18px" />
+                    </div>
+                </div>
+                <div class="form-group" style="text-align:center">
+                    <div class="control-label col-md-10">
+                        <br />
+                        @Html.ActionLink("Volver Atras", "Index", new { }, new { @class = "btn btn-warning fa fa-long-arrow-alt-left" })
+                    </div>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">

@@ -1,115 +1,119 @@
 ﻿@model NominaDataBase.Empleados
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "NominaAPP - Detalles Empleados";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2 class="p-3 mb-2 bg-primary text-white col-md-8">Detalles</h2>
 
-<div>
-    <h4>Empleados</h4>
+<div class="form-horizontal col-md-8" style="text-align:center">
+    <h3 class="p-3 mb-2 bg-info text-white col-md-4">Empleado #@Html.DisplayFor(model => model.IdEmpleado)</h3>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Cedula)
-        </dt>
+    <br /><br />
+    <div>
+        <dl class="dl-horizontal col-md-6">
+            <dt>
+                <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Cedula):</h3>
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Cedula)
-        </dd>
+            <dd>
+                <h3>@Html.DisplayFor(model => model.Cedula)</h3>
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
+            <dt>
+                <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Nombre):</h3>
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
+            <dd>
+                <h3>@Html.DisplayFor(model => model.Nombre)</h3>
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Apellido)
-        </dt>
+            <dt>
+                <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Apellido):</h3>
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Apellido)
-        </dd>
+            <dd>
+                <h3>@Html.DisplayFor(model => model.Apellido)</h3>
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Salario)
-        </dt>
+            <dt>
+                <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Salario):</h3>
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Salario)
-        </dd>
+            <dd>
+                <h3>@Html.DisplayFor(model => model.Salario)</h3>
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Salario_H_Extra)
-        </dt>
+            <dt>
+                <h3 style="font-weight:bold">@Html.DisplayName("Salario H Extra:")</h3>
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Salario_H_Extra)
-        </dd>
+            <dd>
+                <h3>@Html.DisplayFor(model => model.Salario_H_Extra)</h3>
+            </dd>
+        </dl>
+        <dl class="dl-horizontal col-md-6">
+            <dt>
+                <h3 style="font-weight:bold">@Html.DisplayName("Salario H Ord:")</h3>
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Salario_H_Ordinarias)
-        </dt>
+            <dd>
+                <h3>@Html.DisplayFor(model => model.Salario_H_Ordinarias)</h3>
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Salario_H_Ordinarias)
-        </dd>
+            <dt>
+                <h3 style="font-weight:bold">@Html.DisplayName("Fecha Ingreso:")</h3>
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaIngreso)
-        </dt>
+            <dd>
+                <h3>@Html.DisplayFor(model => model.FechaIngreso)</h3>
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.FechaIngreso)
-        </dd>
+            <dt>
+                <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Estado):</h3>
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Estado)
-        </dt>
+            <dd>
+                <h3>@Html.DisplayFor(model => model.Estado)</h3>
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Estado)
-        </dd>
+            <dt>
+                <h3 style="font-weight:bold">@Html.DisplayName("Departamento:")</h3>
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Departamentos.Nombre)
-        </dt>
+            <dd>
+                <h3>@Html.DisplayFor(model => model.Departamentos.Nombre)</h3>
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Departamentos.Nombre)
-        </dd>
+            <dt>
+                @*@Html.DisplayNameFor(model => model.Nominas.Nombre)*@
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Nominas.Nombre)
-        </dt>
+            <dd>
+                @* @Html.DisplayFor(model => model.Nominas.Nombre)*@
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nominas.Nombre)
-        </dd>
+            <dt>
+                <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Puestos.Puesto):</h3>
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Puestos.Puesto)
-        </dt>
+            <dd>
+                <h3>@Html.DisplayFor(model => model.Puestos.Puesto)</h3>
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Puestos.Puesto)
-        </dd>
+            <dt>
+                @* @Html.DisplayNameFor(model => model.Nominas1.Nombre)*@
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Nominas1.Nombre)
-        </dt>
+            <dd>
+                @* @Html.DisplayFor(model => model.Nominas1.Nombre)*@
+            </dd>
+        </dl>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nominas1.Nombre)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdEmpleado }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+    </div>
+    <div class="form-horizontal col-md-8">
+        <br />
+        @Html.ActionLink("Volver Atras", "Index", new { }, new { @class = "btn btn-info" }) |
+        @Html.ActionLink("Editar", "Edit", new { id = Model.IdEmpleado }, new { @class = "btn btn-warning" })
+    </div>
