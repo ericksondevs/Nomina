@@ -8,7 +8,7 @@ namespace NominaDataBase
     {
         //String conection = @"Server=localhost; database = nominadatabase; uid=root1; password=admin;";
 
-         String conection = @"Server=mysqlservernominadb.mysql.database.azure.com; Port=3306; Database=nominadatabase; uid=root1@mysqlservernominadb; password=AdminRoot80; SslMode=Preferred;";
+         public String conection = @"Server=mysqlservernominadb.mysql.database.azure.com; Port=3306; Database=nominadatabase; uid=root1@mysqlservernominadb; password=AdminRoot80; SslMode=Preferred;";
 
         public MySQLConection()
         {

@@ -12,7 +12,7 @@ namespace NominaWeb.Controllers
 {
     public class PuestoController : BaseController
     {
-        private NominaDBEntities db = new NominaDBEntities();
+       // private NominaDBEntities db = new NominaDBEntities();
 
         // GET: Puesto
         public ActionResult Index()

@@ -12,10 +12,9 @@ namespace NominaWeb.Controllers
 {
     public class EmpleadoController : BaseController
     {
-        private NominaDBEntities db = new NominaDBEntities();
+       // private NominaDBEntities db = new NominaDBEntities();
 
         //private MySQLConection DB = new MySQLConection();
-        
 
         // GET: Empleado
         public ActionResult Index()

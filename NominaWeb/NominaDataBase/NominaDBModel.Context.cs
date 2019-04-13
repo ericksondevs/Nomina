@@ -16,12 +16,7 @@ namespace NominaDataBase
     
     public partial class NominaDBEntities : DbContext
     {
-        public NominaDBEntities()
-            : base("name=NominaDBEntities")
-        {
-        }
-
-        public NominaDBEntities(DbConnection existingConnection, bool contextOwnsConnection) : base(existingConnection, contextOwnsConnection)
+        public NominaDBEntities(DbConnection existingConnection, bool contextOwnsConnection) : base(existingConnection, contextOwnsConnection) 
         {
 
         }

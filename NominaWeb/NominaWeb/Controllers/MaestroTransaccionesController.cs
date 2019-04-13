@@ -13,7 +13,6 @@ namespace NominaWeb.Controllers
 {
     public class MaestroTransaccionesController : BaseController
     {
-        private NominaDBEntities db = new NominaDBEntities();
         UnitOfWork u = new UnitOfWork();
         // GET: MaestroTransacciones
         public ActionResult Index(string searchName)

@@ -8,6 +8,7 @@ using Owin;
 using NominaWeb.Models;
 using MySql.Data.EntityFramework;
 using System.Data.Entity;
+using NominaDataBase;
 
 namespace NominaWeb
 {
@@ -21,6 +22,8 @@ namespace NominaWeb
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
             DbConfiguration.SetConfiguration(new MySqlEFConfiguration());
+
+         
 
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider

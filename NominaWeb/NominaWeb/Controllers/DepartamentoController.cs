@@ -13,7 +13,7 @@ namespace NominaWeb.Controllers
     public class DepartamentoController : BaseController
     {
         //Evitar usar esta llamada, y hacerlo con UnitOfWork
-        private NominaDBEntities db = new NominaDBEntities();
+        //private NominaDBEntities db = new NominaDBEntities();
 
         UnitOfWork unit = new UnitOfWork();
         // GET: Departamento

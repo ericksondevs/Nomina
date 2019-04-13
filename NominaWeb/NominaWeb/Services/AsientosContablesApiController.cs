@@ -12,9 +12,10 @@ using NominaDataBase;
 
 namespace NominaWeb.Services
 {
-    public class AsientosContablesApiController : ApiController
+    public class AsientosContablesApiController : BaseApiController
     {
-        private NominaDBEntities db = new NominaDBEntities();
+
+       // private NominaDBEntities db = new NominaDBEntities();
 
         // GET: api/AsientosContablesApi
         public IQueryable<AsientosContables> GetAsientosContables()

@@ -12,7 +12,7 @@ namespace NominaWeb.Controllers
 {
     public class DetalleTransacciones : BaseController
     {
-        private NominaDBEntities db = new NominaDBEntities();
+       // private NominaDBEntities db = new NominaDBEntities();
 
         // GET: DetalleTransacciones
         public ActionResult Index()
