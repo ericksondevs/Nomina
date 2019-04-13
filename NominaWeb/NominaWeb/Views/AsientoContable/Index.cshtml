@@ -1,70 +1,78 @@
 ﻿@model IEnumerable<NominaDataBase.AsientosContables>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "NominaAPP - Asientos Contables";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2 class="p-3 mb-2 bg-primary text-white col-lg-12">&nbsp;&nbsp;Asientos Contables</h2>
+<br /><br /><br /><br />
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Nuevo Asiento Contable", "Create", new { }, new { @class = "btn btn-success" })
+    <br /><br />
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cuenta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoMovimiento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaAsiento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MontoAsiento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Estado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Empleados.Cedula)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cuenta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TipoMovimiento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaAsiento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MontoAsiento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Empleados.Cedula)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdAsiento }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdAsiento }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdAsiento })
-        </td>
-    </tr>
-}
+<div class="col-md-16">
+    <table class="table table-bordered table-striped text-center">
+        <tr style="font-size:18px">
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cuenta)
+            </th>
+            <th>
+                @Html.DisplayName("Tipo de Movimiento")
+            </th>
+            <th>
+                @Html.DisplayName("Fecha de Asiento")
+            </th>
+            <th>
+                @Html.DisplayName("Monto de Asiento")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayName("Cedula de Empleado")
+            </th>
+            <th>
+                @Html.DisplayName("Acción")
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr style="font-size:18px">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cuenta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoMovimiento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaAsiento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MontoAsiento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Empleados.Cedula)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IdAsiento }, new { @class = "btn btn-warning" }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.IdAsiento }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.IdAsiento }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>

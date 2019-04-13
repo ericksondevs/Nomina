@@ -1,7 +1,7 @@
 ﻿@model NominaDataBase.Nominas
 
 @{
-    ViewBag.Title = "NominaAPP - Eliminar Nómina";
+    ViewBag.Title = "NominaAPP - Eliminar Empleado";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,137 +11,133 @@
 
     <h3>Esta seguro de eliminar este registro?</h3>
 
-    <h3 class="p-3 mb-2 bg-info text-white col-md-8" style="margin:120px">Nómina #@Html.DisplayFor(model => model.IdNomina)</h3>
-    <hr />
-    <br /><br />
+    <h3 class=" mb-2 bg-info text-white col-md-12" style="text-align:center">Nomina No. @Html.DisplayFor(model => model.IdNomina)</h3>
+    <dl class="dl-horizontal col-md-6">
+        <dt>
+            <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Nombre):</h3>
+        </dt>
 
-    <div>
-        <dl class="dl-horizontal col-md-6">
-            <dt>
-                <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Nombre):</h3>
-            </dt>
+        <dd>
+            <h3>@Html.DisplayFor(model => model.Nombre)</h3>
+        </dd>
 
-            <dd>
-                <h3>@Html.DisplayFor(model => model.Nombre)</h3>
-            </dd>
+        <dt>
+            <h3 style="font-weight:bold">@Html.DisplayName("Tipo Nomina:")</h3>
+        </dt>
 
-            <dt>
-                <h3 style="font-weight:bold">@Html.DisplayName("Tipo Nomina:")</h3>
-            </dt>
+        <dd>
+            <h3> @Html.DisplayFor(model => model.TipoNomina)</h3>
+        </dd>
 
-            <dd>
-                <h3> @Html.DisplayFor(model => model.TipoNomina)</h3>
-            </dd>
+        <dt>
+            <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Banco):</h3>
+        </dt>
 
-            <dt>
-                <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Banco):</h3>
-            </dt>
+        <dd>
+            <h3>@Html.DisplayFor(model => model.Banco)</h3>
+        </dd>
 
-            <dd>
-                <h3>@Html.DisplayFor(model => model.Banco)</h3>
-            </dd>
+        <dt>
+            <h3 style="font-weight:bold">@Html.DisplayName("Fecha Desde:")</h3>
+        </dt>
 
-            <dt>
-                <h3 style="font-weight:bold">@Html.DisplayName("Fecha Desde:")</h3>
-            </dt>
+        <dd>
+            <h3>@Html.DisplayFor(model => model.fechaDesde)</h3>
+        </dd>
 
-            <dd>
-                <h3>@Html.DisplayFor(model => model.fechaDesde)</h3>
-            </dd>
+        <dt>
+            <h3 style="font-weight:bold">Fecha Hasta:</h3>
+        </dt>
 
-            <dt>
-                <h3 style="font-weight:bold">Fecha Hasta:</h3>
-            </dt>
+        <dd>
+            <h3>@Html.DisplayFor(model => model.fechaHasta)</h3>
+        </dd>
 
-            <dd>
-                <h3>@Html.DisplayFor(model => model.fechaHasta)</h3>
-            </dd>
+        <dt>
+            <h3 style="font-weight:bold">@Html.DisplayName("Fecha Efect :")</h3>
+        </dt>
 
-            <dt>
-                <h3 style="font-weight:bold">@Html.DisplayName("Fecha Efect :")</h3>
-            </dt>
+        <dd>
+            <h3>@Html.DisplayFor(model => model.FechaEfectividad)</h3>
+        </dd>
 
-            <dd>
-                <h3>@Html.DisplayFor(model => model.FechaEfectividad)</h3>
-            </dd>
+        <dt>
+            <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Monto):</h3>
+        </dt>
 
-            <dt>
-                <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Monto):</h3>
-            </dt>
+        <dd>
+            <h3>@Html.DisplayFor(model => model.Monto)</h3>
+        </dd>
+    </dl>
+    <dl class="dl-horizontal col-md-6">
+        <dt>
+            <h3 style="font-weight:bold">@Html.DisplayName("Total AFP:")</h3>
+        </dt>
+        <dd>
+            <h3>@Html.DisplayFor(model => model.Total_AFP)</h3>
+        </dd>
 
-            <dd>
-                <h3>@Html.DisplayFor(model => model.Monto)</h3>
-            </dd>
-        </dl>
-        <dl class="dl-horizontal col-md-6">
-            <dt>
-                <h3 style="font-weight:bold">@Html.DisplayName("Total AFP:")</h3>
-            </dt>
-            <dd>
-                <h3>@Html.DisplayFor(model => model.Total_AFP)</h3>
-            </dd>
+        <dt>
+            <h3 style="font-weight:bold">@Html.DisplayName("Total ARS:")</h3>
+        </dt>
 
-            <dt>
-                <h3 style="font-weight:bold">@Html.DisplayName("Total ARS:")</h3>
-            </dt>
+        <dd>
+            <h3>@Html.DisplayFor(model => model.Total_ARS)</h3>
+        </dd>
 
-            <dd>
-                <h3>@Html.DisplayFor(model => model.Total_ARS)</h3>
-            </dd>
+        <dt>
+            <h3 style="font-weight:bold">@Html.DisplayName("Total ISR:")</h3>
+        </dt>
 
-            <dt>
-                <h3 style="font-weight:bold">@Html.DisplayName("Total ISR:")</h3>
-            </dt>
+        <dd>
+            <h3>@Html.DisplayFor(model => model.Total_ISR)</h3>
+        </dd>
 
-            <dd>
-                <h3>@Html.DisplayFor(model => model.Total_ISR)</h3>
-            </dd>
+        <dt>
+            <h3 style="font-weight:bold">@Html.DisplayName("Total Ingresos:")</h3>
+        </dt>
 
-            <dt>
-                <h3 style="font-weight:bold">@Html.DisplayName("Total Ingresos:")</h3>
-            </dt>
+        <dd>
+            <h3>@Html.DisplayFor(model => model.Total_ingresos)</h3>
+        </dd>
 
-            <dd>
-                <h3>@Html.DisplayFor(model => model.Total_ingresos)</h3>
-            </dd>
+        <dt>
+            <h3 style="font-weight:bold">@Html.DisplayName("Total Otro Desc:")</h3>
+        </dt>
 
-            <dt>
-                <h3 style="font-weight:bold">@Html.DisplayName("Total Otro Desc:")</h3>
-            </dt>
+        <dd>
+            <h3>@Html.DisplayFor(model => model.Total_Otros_descuentos)</h3>
+        </dd>
 
-            <dd>
-                <h3>@Html.DisplayFor(model => model.Total_Otros_descuentos)</h3>
-            </dd>
+        <dt>
+            <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Observaciones):</h3>
+        </dt>
 
-            <dt>
-                <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Observaciones):</h3>
-            </dt>
+        <dd>
+            <h3>@Html.DisplayFor(model => model.Observaciones)</h3>
+        </dd>
 
-            <dd>
-                <h3>@Html.DisplayFor(model => model.Observaciones)</h3>
-            </dd>
+        <dt>
+            <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Estado):</h3>
+        </dt>
 
-            <dt>
-                <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Estado):</h3>
-            </dt>
-
-            <dd>
-                <h3>@Html.DisplayFor(model => model.Estado)</h3>
-            </dd>
-        </dl>
-    </div>
+        <dd>
+            <h3>@Html.DisplayFor(model => model.Estado)</h3>
+        </dd>
+    </dl>
+</div>
 
 
-    <div class="form-horizontal col-md-12">
-        <br />
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
+<div class="form-horizontal col-md-12">
+    <br />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-            <div class="form-actions no-color">
-                @Html.ActionLink("Volver Atras", "Index", new { }, new { @class = "btn btn-info" }) |
-                <input type="submit" value="Eliminar" class="btn btn-danger" />
-            </div>
-        }
-    </div>
+        <div class="form-actions no-color">
+            @Html.ActionLink("Volver Atras", "Index", new { }, new { @class = "btn btn-info" }) |
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+        </div>
+    }
+</div>
 </div>

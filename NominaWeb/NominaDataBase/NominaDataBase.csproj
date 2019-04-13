@@ -94,12 +94,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AsientosContables.cs" />
+    <Compile Include="AsientosContables.cs">
+      <DependentUpon>NominaDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="BaseEntity.cs" />
-    <Compile Include="Departamentos.cs" />
-    <Compile Include="Detalle_Transacciones.cs" />
-    <Compile Include="Empleados.cs" />
-    <Compile Include="Maestro_Transacciones.cs" />
+    <Compile Include="DataTimeSring.cs" />
+    <Compile Include="Departamentos.cs">
+      <DependentUpon>NominaDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Detalle_Transacciones.cs">
+      <DependentUpon>NominaDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Empleados.cs">
+      <DependentUpon>NominaDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Maestro_Transacciones.cs">
+      <DependentUpon>NominaDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="MetaDataEntities\DetalleTransaccionesMetaData.cs" />
     <Compile Include="MetaDataEntities\MaestroTransaccionesMetaData.cs" />
     <Compile Include="MetaDataEntities\PartialMetaDataClasses.cs" />
@@ -119,12 +130,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>NominaDBModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Nominas.cs" />
+    <Compile Include="Nominas.cs">
+      <DependentUpon>NominaDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Puestos.cs" />
-    <Compile Include="Tipos_Deducciones.cs" />
-    <Compile Include="Tipos_Ingresos.cs" />
-    <Compile Include="TipoTransaccion.cs" />
+    <Compile Include="Puestos.cs">
+      <DependentUpon>NominaDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tipos_Deducciones.cs">
+      <DependentUpon>NominaDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tipos_Ingresos.cs">
+      <DependentUpon>NominaDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoTransaccion.cs">
+      <DependentUpon>NominaDBModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="NominaDBModel.edmx">

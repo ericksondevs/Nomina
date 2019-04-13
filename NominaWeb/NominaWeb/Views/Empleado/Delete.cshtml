@@ -1,121 +1,139 @@
 ﻿@model NominaDataBase.Empleados
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "NominaAPP - Eliminar Empleado";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
+<h2 class="p-3 mb-2 bg-primary text-white col-md-8">Eliminar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Empleados</h4>
-    <hr />
-    <dl class="dl-horizontal">
+<div class="form-horizontal col-md-8" style="text-align:center">
+
+    <h3>Esta seguro de eliminar este registro?</h3>
+
+    <h3 class=" mb-2 bg-info text-white col-md-8" style="text-align:center">Empleado #@Html.DisplayFor(model => model.IdEmpleado)</h3>
+    <dl class="dl-horizontal col-md-8">
         <dt>
-            @Html.DisplayNameFor(model => model.Cedula)
+            <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Cedula)</h3>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Cedula)
+            <h3>@Html.DisplayFor(model => model.Cedula)</h3>
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
+            <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Nombre):</h3>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Nombre)
+            <h3>@Html.DisplayFor(model => model.Nombre)</h3>
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Apellido)
+            <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Apellido)</h3>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Apellido)
+            <h3>@Html.DisplayFor(model => model.Apellido)</h3>
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Salario)
+            <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Salario)</h3>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Salario)
+            <h3>@Html.DisplayFor(model => model.Salario)</h3>
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Salario_H_Extra)
+            <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Salario_H_Extra)</h3>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Salario_H_Extra)
+            <h3>@Html.DisplayFor(model => model.Salario_H_Extra)</h3>
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Salario_H_Ordinarias)
+            <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Salario_H_Ordinarias)</h3>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Salario_H_Ordinarias)
+            <h3>@Html.DisplayFor(model => model.Salario_H_Ordinarias)</h3>
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FechaIngreso)
+            <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.FechaIngreso)</h3>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FechaIngreso)
+            <h3>@Html.DisplayFor(model => model.FechaIngreso)</h3>
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Estado)
+            <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Estado)</h3>
         </dt>
-
+    </dl>
+    <dl class="dl-horizontal col-md-4">
         <dd>
-            @Html.DisplayFor(model => model.Estado)
+            <h3>@Html.DisplayFor(model => model.Estado)</h3>
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Departamentos.Nombre)
+            <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Departamentos.Nombre)</h3>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Departamentos.Nombre)
+            <h3>@Html.DisplayFor(model => model.Departamentos.Nombre)</h3>
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Nominas.Nombre)
+            @*@Html.DisplayNameFor(model => model.Nominas.Nombre)*@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Nominas.Nombre)
+            @* @Html.DisplayFor(model => model.Nominas.Nombre)*@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Puestos.Puesto)
+            <h3 style="font-weight:bold">@Html.DisplayNameFor(model => model.Puestos.Puesto)</h3>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Puestos.Puesto)
+            <h3>@Html.DisplayFor(model => model.Puestos.Puesto)</h3>
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Nominas1.Nombre)
+            @*    @Html.DisplayNameFor(model => model.Nominas1.Nombre)*@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Nominas1.Nombre)
+            @*   @Html.DisplayFor(model => model.Nominas1.Nombre)*@
         </dd>
 
     </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+    <div class="form-group col-md-8" style="text-align:center">
+        <br />
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+            <div class="form-group">
+                <div class="control-label col-md-12">
+                    <br />
+                    <input type="submit" value="Eliminar Empleado" class="btn btn-danger" style="font-size:18px" />
+                </div>
+            </div>
+            <div class="form-group" style="text-align:center">
+                <div class="control-label col-md-12">
+                    <br />
+                    @Html.ActionLink("Volver Atras", "Index", new { }, new { @class = "btn btn-warning fa fa-long-arrow-alt-left" })
+                </div>
+            </div>
+        }
+    </div>
+
 </div>
+
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
