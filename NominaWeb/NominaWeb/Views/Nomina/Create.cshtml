@@ -1,7 +1,7 @@
 ﻿@model NominaDataBase.Nominas
 
 @{
-    ViewBag.Title = "NominaAPP - Creacion de  Nóminas";
+    ViewBag.Title = "NominaAPP - Creacion de  Nómina";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -117,6 +117,7 @@
                     <div class="col-md-10 form-group" style="text-align:right">
                         @Html.EditorFor(model => model.fechaDesde, new { htmlAttributes = new { @class = "datepicker form-control", @style = "font-size: 16px", @placeholder = "Fecha Inicial" } })
                         @Html.ValidationMessageFor(model => model.fechaDesde, "", new { @class = "text-danger" })
+                        <span class="text-danger">@ViewBag.FechaErrorMessage</span>
                     </div>
                 </div>
 
@@ -125,6 +126,7 @@
                     <div class="col-md-10 form-group" style="text-align:right">
                         @Html.EditorFor(model => model.fechaHasta, new { htmlAttributes = new { @class = "datepicker form-control", @style = "font-size: 16px", @placeholder = "Fecha Final" } })
                         @Html.ValidationMessageFor(model => model.fechaHasta, "", new { @class = "text-danger" })
+                        <span class="text-danger">@ViewBag.FechaErrorMessage</span>
                     </div>
                 </div>
 

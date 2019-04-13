@@ -74,9 +74,17 @@ namespace NominaWeb.Controllers
         {
                 if (ModelState.IsValid)
                 {
-                    db.Nominas.Add(nominas);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
+                if (nominas.fechaDesdeConverted.ToString().Equals(nominas.fechahastaConverted.ToString()))
+                {
+                    ViewBag.FechaErrorMessage = "FEECHA INCORRECTAS";
+                }
+                else
+                    {
+                        db.Nominas.Add(nominas);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+
                 }
             
             return View(nominas);

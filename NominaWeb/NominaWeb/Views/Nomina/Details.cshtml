@@ -127,16 +127,8 @@
         </dl>
     </div>
 </div>
-
-<div class="form-horizontal col-md-12">
+<div class="form-horizontal col-md-8">
     <br />
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            @Html.ActionLink("Volver Atras", "Index", new { }, new { @class = "btn btn-info" }) |
-            <input type="submit" value="Eliminar" class="btn btn-danger" />
-        </div>
-    }
+    @Html.ActionLink("Volver Atras", "Index", new { }, new { @class = "btn btn-info" }) |
+    @Html.ActionLink("Editar", "Edit", new { id = Model.IdNomina }, new { @class = "btn btn-warning" })
 </div>
