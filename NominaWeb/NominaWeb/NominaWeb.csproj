@@ -6774,6 +6774,8 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Nomina%2845px%29.png" />
+    <Content Include="Images\Nomina%2825px%29.png" />
     <Content Include="Images\Nomina%28256px%29.png" />
     <Content Include="AdminResources\bower_components\bootstrap-colorpicker\.bower.json" />
     <Content Include="AdminResources\bower_components\bootstrap-colorpicker\bower.json" />
